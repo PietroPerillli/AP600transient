@@ -12,15 +12,25 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a
-:OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a rdf:type owl:ObjectProperty ;
-                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
-                                                        rdfs:label "isComponentOf"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl#hasBehaviour
+:hasBehaviour rdf:type owl:ObjectProperty ;
+              rdfs:label "hasBehaviour" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584
-:OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 rdf:type owl:ObjectProperty ;
-                                                        rdfs:label "hasStructuralRelation"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl#hasNext
+:hasNext rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ,
+                  owl:IrreflexiveProperty .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasProperty
+:hasProperty rdf:type owl:ObjectProperty ;
+             rdfs:label "hasProperty" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasStage
+:hasStage rdf:type owl:ObjectProperty ;
+          rdfs:label "hasStage" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
@@ -28,10 +38,25 @@
                                                         rdfs:label "isConnectedWith"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a
+:OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
+                                                        owl:inverseOf :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                                                        rdf:type owl:TransitiveProperty ,
+                                                                 owl:IrreflexiveProperty ;
+                                                        rdfs:label "isComponentOf"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010
 :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 rdf:type owl:ObjectProperty ;
                                                         rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
+                                                        rdf:type owl:TransitiveProperty ;
                                                         rdfs:label "hasComponent"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584
+:OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 rdf:type owl:ObjectProperty ;
+                                                        rdfs:label "hasStructuralRelation"@en .
 
 
 #################################################################
@@ -73,7 +98,6 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d
 :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_58cea3f8_fcf4_433d_9f75_68f9e999398f ;
                                                       rdfs:range xsd:double ;
                                                       rdfs:label "powerValue"@en .
 
@@ -94,6 +118,12 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.ap600.com/ontolgies/ap600.owl#PWR
+:PWR rdf:type owl:Class ;
+     rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+     rdfs:comment "PWR"@en .
+
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_002c7b8a_a181_4005_974c_fa7bf6a8b726
 :OWLClass_002c7b8a_a181_4005_974c_fa7bf6a8b726 rdf:type owl:Class ;
@@ -276,12 +306,6 @@
                                                rdfs:label "ColdLeg"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_58cea3f8_fcf4_433d_9f75_68f9e999398f
-:OWLClass_58cea3f8_fcf4_433d_9f75_68f9e999398f rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_8bb7ce63_52a3_40c1_9d03_d960222241b2 ;
-                                               rdfs:label "Ap600"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_59910667_0ca8_47e8_a108_2d30ac39a531
 :OWLClass_59910667_0ca8_47e8_a108_2d30ac39a531 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ;
@@ -356,12 +380,6 @@
                                                rdfs:label "Process"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8bb7ce63_52a3_40c1_9d03_d960222241b2
-:OWLClass_8bb7ce63_52a3_40c1_9d03_d960222241b2 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-                                               rdfs:label "NuclearReactor"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
 :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
@@ -390,14 +408,14 @@
                                                                  owl:someValuesFrom :OWLClass_3f751216_be6e_4662_878e_d17c54a1a2e0
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
                                                                ] ;
                                                rdfs:label "VesselDowncomer"@it .
 
@@ -451,14 +469,14 @@
 :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_8ce84bc7_9ba4_4b31_9fb5_9de0bb5f468e
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
                                                                ] ;
                                                rdfs:label "Core"@en .
 
@@ -536,6 +554,100 @@
 :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ;
                                                rdfs:label "PrimaryLoop"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.ap600.com/ontolgies/ap600.owl#AP600
+:AP600 rdf:type owl:NamedIndividual ,
+                :PWR ;
+       :hasBehaviour :LOCA1 ;
+       :hasStage :normalOperatingCondition1 ;
+       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core1 ,
+                                                               :RCS1 ,
+                                                               :Vessel1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Core1
+:Core1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#LOCA1
+:LOCA1 rdf:type owl:NamedIndividual ;
+       :hasStage :SCRAM1 ,
+                 :Trans1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Loop1
+:Loop1 rdf:type owl:NamedIndividual ;
+       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :coldLeg1 ,
+                                                               :hotLeg1 ,
+                                                               :steamGenerator1 ,
+                                                               :waterPump1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#RCS1
+:RCS1 rdf:type owl:NamedIndividual ;
+      :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Loop1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#SCRAM1
+:SCRAM1 rdf:type owl:NamedIndividual ;
+        :hasStage :Trans2 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Trans1
+:Trans1 rdf:type owl:NamedIndividual ;
+        :hasProperty :dataSet2 ;
+        rdfs:comment "Loca Transitory"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Trans2
+:Trans2 rdf:type owl:NamedIndividual ;
+        :hasProperty :dataSet3 ;
+        rdfs:comment "SCRAM Transitory (SCRAM_Transitory)"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Vessel1
+:Vessel1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#coldLeg1
+:coldLeg1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#dataSet1
+:dataSet1 rdf:type owl:NamedIndividual ;
+          rdfs:comment "dataSet of normalOperatingCondition1" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#dataSet2
+:dataSet2 rdf:type owl:NamedIndividual ;
+          rdfs:comment "dataSet of Trans1" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#dataSet3
+:dataSet3 rdf:type owl:NamedIndividual ;
+          rdfs:comment "dataSet of Trans2" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hotLeg1
+:hotLeg1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#normalOperatingCondition1
+:normalOperatingCondition1 rdf:type owl:NamedIndividual ;
+                           :hasProperty :dataSet1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#steamGenerator1
+:steamGenerator1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#waterPump1
+:waterPump1 rdf:type owl:NamedIndividual .
 
 
 #################################################################
