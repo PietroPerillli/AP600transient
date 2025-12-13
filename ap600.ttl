@@ -12,29 +12,20 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasBehaviour
-:hasBehaviour rdf:type owl:ObjectProperty ;
-              rdfs:label "hasBehaviour" .
+###  http://www.ap600.com/ontolgies/ap600.owl#hasTemporalRelation
+:hasTemporalRelation rdf:type owl:ObjectProperty .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasNext
-:hasNext rdf:type owl:ObjectProperty ,
-                  owl:AsymmetricProperty ,
-                  owl:IrreflexiveProperty .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasProperty
-:hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:label "hasProperty" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasStage
-:hasStage rdf:type owl:ObjectProperty ;
-          rdfs:label "hasStage" .
+###  http://www.ap600.com/ontolgies/ap600.owl#precedes
+:precedes rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasTemporalRelation ;
+          rdf:type owl:TransitiveProperty .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
 :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
+                                                        rdf:type owl:SymmetricProperty ;
                                                         rdfs:label "isConnectedWith"@en .
 
 
@@ -57,6 +48,28 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584
 :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 rdf:type owl:ObjectProperty ;
                                                         rdfs:label "hasStructuralRelation"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasBehaviour
+:hasBehaviour rdf:type owl:ObjectProperty ;
+              rdfs:label "hasBehaviour" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasNext
+:hasNext rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :hasTemporalRelation ;
+         rdf:type owl:AsymmetricProperty ,
+                  owl:IrreflexiveProperty .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasProperty
+:hasProperty rdf:type owl:ObjectProperty ;
+             rdfs:label "hasProperty" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasStage
+:hasStage rdf:type owl:ObjectProperty ;
+          rdfs:label "hasStage" .
 
 
 #################################################################
@@ -119,10 +132,15 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#PWR
-:PWR rdf:type owl:Class ;
-     rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-     rdfs:comment "PWR"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl#Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+         rdfs:comment "dcat:Dataset" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Transitory
+:Transitory rdf:type owl:Class ;
+            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_002c7b8a_a181_4005_974c_fa7bf6a8b726
@@ -556,98 +574,120 @@
                                                rdfs:label "PrimaryLoop"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/PWR
+:PWR rdf:type owl:Class ;
+     rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+     rdfs:comment "PWR"@en .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#AP600
+###  http://www.ap600.com/ontolgies/ap600.owl/AP600
 :AP600 rdf:type owl:NamedIndividual ,
                 :PWR ;
-       :hasBehaviour :LOCA1 ;
-       :hasStage :normalOperatingCondition1 ;
        :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core1 ,
                                                                :RCS1 ,
-                                                               :Vessel1 .
+                                                               :Vessel1 ;
+       :hasBehaviour :LOCA1 ;
+       :hasStage :normalOperatingCondition1 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Core1
-:Core1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/Core1
+:Core1 rdf:type owl:NamedIndividual ,
+                :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#LOCA1
-:LOCA1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/LOCA1
+:LOCA1 rdf:type owl:NamedIndividual ,
+                :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
        :hasStage :SCRAM1 ,
                  :Trans1 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Loop1
-:Loop1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/Loop1
+:Loop1 rdf:type owl:NamedIndividual ,
+                :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
        :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :coldLeg1 ,
                                                                :hotLeg1 ,
                                                                :steamGenerator1 ,
                                                                :waterPump1 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#RCS1
-:RCS1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/RCS1
+:RCS1 rdf:type owl:NamedIndividual ,
+               :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Loop1 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#SCRAM1
-:SCRAM1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM1
+:SCRAM1 rdf:type owl:NamedIndividual ,
+                 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
         :hasStage :Trans2 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Trans1
-:Trans1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/Trans1
+:Trans1 rdf:type owl:NamedIndividual ,
+                 :Transitory ;
         :hasProperty :dataSet2 ;
         rdfs:comment "Loca Transitory"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Trans2
-:Trans2 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/Trans2
+:Trans2 rdf:type owl:NamedIndividual ,
+                 :Transitory ;
         :hasProperty :dataSet3 ;
         rdfs:comment "SCRAM Transitory (SCRAM_Transitory)"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Vessel1
-:Vessel1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/Vessel1
+:Vessel1 rdf:type owl:NamedIndividual ,
+                  :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#coldLeg1
-:coldLeg1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg1
+:coldLeg1 rdf:type owl:NamedIndividual ,
+                   :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#dataSet1
-:dataSet1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/dataSet1
+:dataSet1 rdf:type owl:NamedIndividual ,
+                   :Dataset ;
           rdfs:comment "dataSet of normalOperatingCondition1" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#dataSet2
-:dataSet2 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/dataSet2
+:dataSet2 rdf:type owl:NamedIndividual ,
+                   :Dataset ;
           rdfs:comment "dataSet of Trans1" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#dataSet3
-:dataSet3 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/dataSet3
+:dataSet3 rdf:type owl:NamedIndividual ,
+                   :Dataset ;
           rdfs:comment "dataSet of Trans2" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hotLeg1
-:hotLeg1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/hotLeg1
+:hotLeg1 rdf:type owl:NamedIndividual ,
+                  :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#normalOperatingCondition1
-:normalOperatingCondition1 rdf:type owl:NamedIndividual ;
+###  http://www.ap600.com/ontolgies/ap600.owl/normalOperatingCondition1
+:normalOperatingCondition1 rdf:type owl:NamedIndividual ,
+                                    :OWLClass_2335c475_1e71_4d3c_9383_ebc277912e5e ;
                            :hasProperty :dataSet1 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#steamGenerator1
-:steamGenerator1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/steamGenerator1
+:steamGenerator1 rdf:type owl:NamedIndividual ,
+                          :OWLClass_c12e58ee_4d9c_47c0_9476_a1a85795ac81 .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#waterPump1
-:waterPump1 rdf:type owl:NamedIndividual .
+###  http://www.ap600.com/ontolgies/ap600.owl/waterPump1
+:waterPump1 rdf:type owl:NamedIndividual ,
+                     :OWLClass_e93e0e92_d3d6_4d6a_a175_ce4ab4a0e9a4 .
 
 
 #################################################################
