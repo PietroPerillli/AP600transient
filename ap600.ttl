@@ -12,34 +12,6 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasInformationRelation
-:hasInformationRelation rdf:type owl:ObjectProperty ;
-                        rdfs:label "hasInformationRelation" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasInput
-:hasInput rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasInformationRelation ;
-          rdfs:label "hasInput" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasOutput
-:hasOutput rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :hasInformationRelation ;
-           rdfs:label "hasOutput" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasSemioticRelation
-:hasSemioticRelation rdf:type owl:ObjectProperty ;
-                     rdfs:label "hasSemioticRelation" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#standsFor
-:standsFor rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :hasSemioticRelation ;
-           rdfs:label "standsFor" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
 :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e rdf:type owl:ObjectProperty ;
                                                         rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
@@ -73,17 +45,40 @@
               rdfs:label "hasBehaviour" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasInformationRelation
+:hasInformationRelation rdf:type owl:ObjectProperty ;
+                        rdfs:label "hasInformationRelation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasInput
+:hasInput rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasInformationRelation ;
+          rdfs:label "hasInput" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasNext
 :hasNext rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :hasTemporalRelation ;
+         owl:inverseOf :precedes ;
          rdf:type owl:AsymmetricProperty ,
                   owl:IrreflexiveProperty ;
          rdfs:label "hasNext" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasOutput
+:hasOutput rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasInformationRelation ;
+           rdfs:label "hasOutput" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasProperty
 :hasProperty rdf:type owl:ObjectProperty ;
              rdfs:label "hasProperty" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasSemioticRelation
+:hasSemioticRelation rdf:type owl:ObjectProperty ;
+                     rdfs:label "hasSemioticRelation" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasStage
@@ -101,6 +96,12 @@
           rdfs:subPropertyOf :hasTemporalRelation ;
           rdf:type owl:TransitiveProperty ;
           rdfs:label "precedes" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/standsFor
+:standsFor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasSemioticRelation ;
+           rdfs:label "standsFor" .
 
 
 #################################################################
@@ -163,16 +164,11 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Simulation
-:Simulation rdf:type owl:Class ;
-            rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-            rdfs:label "Simuation" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/Dataset
 :Dataset rdf:type owl:Class ;
          rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-         rdfs:comment "dcat:Dataset" .
+         rdfs:comment "Dataset includes all the collected data, obtained as the software was simulating the analized transients." ,
+                      "dcat:Dataset" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_002c7b8a_a181_4005_974c_fa7bf6a8b726
@@ -416,6 +412,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c
 :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+                                               rdfs:comment "Every element of this class is an object that is used to obtain refrigeration of one system and to keep it on workable temperatures (strictly away from melting points)." ;
                                                rdfs:label "Coolant"@en .
 
 
@@ -612,6 +609,13 @@
      rdfs:comment "PWR"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Simulation
+:Simulation rdf:type owl:Class ;
+            rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+            rdfs:comment "Every element of this class is a simulation, used in order to have a look of what is going on inside a AP600 as it is working." ;
+            rdfs:label "Simulation" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Transitory
 :Transitory rdf:type owl:Class ;
             rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 .
@@ -621,24 +625,11 @@
 #    Individuals
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Simulation1
-:Simulation1 rdf:type owl:NamedIndividual ,
-                      :Simulation ;
-             :hasInput :dataSet1 ;
-             :hasOutput :dataSet2 ;
-             :standsFor :LOCA1 .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#Simulation2
-:Simulation2 rdf:type owl:NamedIndividual ,
-                      :Simulation ;
-             :hasInput :dataSet3 ;
-             :hasOutput :dataSet4 .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#dataSet4
-:dataSet4 rdf:type owl:NamedIndividual ,
-                   :Dataset .
+###  http://www.ap600.com/ontolgies/ap600.owl#OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f
+:OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f rdf:type owl:NamedIndividual ,
+                                                                  :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c ;
+                                                         rdfs:comment "This is the main refrigerant that is used inside a nuclear power plant, especially in a PWR-like power plant. It is used inside the primary loop to keep the core away the melting-down condition and to carry away heat, then exchanging it with the secondary loop coolant through the steam generator." ;
+                                                         rdfs:label "water"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600
@@ -684,6 +675,21 @@
         :hasStage :Trans2 .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Simulation1
+:Simulation1 rdf:type owl:NamedIndividual ,
+                      :Simulation ;
+             :hasInput :dataSet1 ;
+             :hasOutput :dataSet2 ;
+             :standsFor :LOCA1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/Simulation2
+:Simulation2 rdf:type owl:NamedIndividual ,
+                      :Simulation ;
+             :hasInput :dataSet3 ;
+             :hasOutput :dataSet4 .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Trans1
 :Trans1 rdf:type owl:NamedIndividual ,
                  :Transitory ;
@@ -724,6 +730,11 @@
 :dataSet3 rdf:type owl:NamedIndividual ,
                    :Dataset ;
           rdfs:comment "dataSet of Trans2" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/dataSet4
+:dataSet4 rdf:type owl:NamedIndividual ,
+                   :Dataset .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hotLeg1
