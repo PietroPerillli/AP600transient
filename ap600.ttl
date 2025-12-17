@@ -12,14 +12,32 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasTemporalRelation
-:hasTemporalRelation rdf:type owl:ObjectProperty .
+###  http://www.ap600.com/ontolgies/ap600.owl#hasInformationRelation
+:hasInformationRelation rdf:type owl:ObjectProperty ;
+                        rdfs:label "hasInformationRelation" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#precedes
-:precedes rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasTemporalRelation ;
-          rdf:type owl:TransitiveProperty .
+###  http://www.ap600.com/ontolgies/ap600.owl#hasInput
+:hasInput rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasInformationRelation ;
+          rdfs:label "hasInput" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasOutput
+:hasOutput rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasInformationRelation ;
+           rdfs:label "hasOutput" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasSemioticRelation
+:hasSemioticRelation rdf:type owl:ObjectProperty ;
+                     rdfs:label "hasSemioticRelation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#standsFor
+:standsFor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasSemioticRelation ;
+           rdfs:label "standsFor" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
@@ -59,7 +77,8 @@
 :hasNext rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :hasTemporalRelation ;
          rdf:type owl:AsymmetricProperty ,
-                  owl:IrreflexiveProperty .
+                  owl:IrreflexiveProperty ;
+         rdfs:label "hasNext" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasProperty
@@ -70,6 +89,18 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasStage
 :hasStage rdf:type owl:ObjectProperty ;
           rdfs:label "hasStage" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasTemporalRelation
+:hasTemporalRelation rdf:type owl:ObjectProperty ;
+                     rdfs:label "hasTemporalRelation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/precedes
+:precedes rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasTemporalRelation ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:label "precedes" .
 
 
 #################################################################
@@ -132,15 +163,16 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Dataset
+###  http://www.ap600.com/ontolgies/ap600.owl#Simulation
+:Simulation rdf:type owl:Class ;
+            rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
+            rdfs:label "Simuation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/Dataset
 :Dataset rdf:type owl:Class ;
          rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
          rdfs:comment "dcat:Dataset" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#Transitory
-:Transitory rdf:type owl:Class ;
-            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_002c7b8a_a181_4005_974c_fa7bf6a8b726
@@ -580,9 +612,34 @@
      rdfs:comment "PWR"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Transitory
+:Transitory rdf:type owl:Class ;
+            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 .
+
+
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Simulation1
+:Simulation1 rdf:type owl:NamedIndividual ,
+                      :Simulation ;
+             :hasInput :dataSet1 ;
+             :hasOutput :dataSet2 ;
+             :standsFor :LOCA1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#Simulation2
+:Simulation2 rdf:type owl:NamedIndividual ,
+                      :Simulation ;
+             :hasInput :dataSet3 ;
+             :hasOutput :dataSet4 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#dataSet4
+:dataSet4 rdf:type owl:NamedIndividual ,
+                   :Dataset .
+
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600
 :AP600 rdf:type owl:NamedIndividual ,
@@ -676,8 +733,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/normalOperatingCondition1
 :normalOperatingCondition1 rdf:type owl:NamedIndividual ,
-                                    :OWLClass_2335c475_1e71_4d3c_9383_ebc277912e5e ;
-                           :hasProperty :dataSet1 .
+                                    :OWLClass_2335c475_1e71_4d3c_9383_ebc277912e5e .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/steamGenerator1
