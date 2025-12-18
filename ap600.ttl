@@ -23,15 +23,12 @@
 :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a rdf:type owl:ObjectProperty ;
                                                         rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
                                                         owl:inverseOf :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                        rdf:type owl:TransitiveProperty ,
-                                                                 owl:IrreflexiveProperty ;
                                                         rdfs:label "isComponentOf"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010
 :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 rdf:type owl:ObjectProperty ;
                                                         rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
-                                                        rdf:type owl:TransitiveProperty ;
                                                         rdfs:label "hasComponent"@en .
 
 
@@ -59,9 +56,6 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasNext
 :hasNext rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :hasTemporalRelation ;
-         owl:inverseOf :precedes ;
-         rdf:type owl:AsymmetricProperty ,
-                  owl:IrreflexiveProperty ;
          rdfs:label "hasNext" .
 
 
@@ -301,6 +295,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92
 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff ;
+                                               rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions." ;
                                                rdfs:label "ScramCondition"@en .
 
 
@@ -338,6 +333,7 @@
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_ec8fce6c_8f6f_41cb_b10b_702489e9450a
                                                                ] ;
+                                               rdfs:comment "That is the superclass that contains all the loops of the system." ;
                                                rdfs:label "Loop"@en .
 
 
@@ -412,13 +408,14 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c
 :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-                                               rdfs:comment "Every element of this class is an object that is used to obtain refrigeration of one system and to keep it on workable temperatures (strictly away from melting points)." ;
+                                               rdfs:comment "Every element of this class is an object that is used to obtain system refrigeration and to keep it on workable temperatures (strictly away from melting points)." ;
                                                rdfs:label "Coolant"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8508fd88_870c_44f8_89a0_3fe85f9e20c3
 :OWLClass_8508fd88_870c_44f8_89a0_3fe85f9e20c3 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
+                                               rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM." ;
                                                rdfs:label "LOCA"@en .
 
 
@@ -482,6 +479,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff
 :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
+                                               rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime." ;
                                                rdfs:label "PlantCondition"@en .
 
 
@@ -509,6 +507,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_d33a21fb_1369_44a5_bd23_624eda3f6dec
 :OWLClass_d33a21fb_1369_44a5_bd23_624eda3f6dec rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff ;
+                                               rdfs:comment "Conditions assumed by the power plant as the power is equal to 100 % (the value that is erogated as the plant is working with the maximum efficiency, so the progettual one)." ;
                                                rdfs:label "FullPower"@en .
 
 
@@ -525,6 +524,7 @@
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
                                                                ] ;
+                                               rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process." ;
                                                rdfs:label "Core"@en .
 
 
@@ -594,19 +594,22 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_f02668d4_f74c_4902_a7b8_b2191d3f041a
 :OWLClass_f02668d4_f74c_4902_a7b8_b2191d3f041a rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
+                                               rdfs:comment "One of the modality at which the reactor can be setted for studying the behaviour during the simulation. In this condition, there is a turbine detachment due to the fact that the rpm are less than 1800." ;
                                                rdfs:label "TurbineTrip"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
 :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ;
+                                               rdfs:comment "Every element of this class is a primary loop, so a loop that is connected with the Core." ;
                                                rdfs:label "PrimaryLoop"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/PWR
 :PWR rdf:type owl:Class ;
      rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-     rdfs:comment "PWR"@en .
+     rdfs:comment "PWR"@en ,
+                  "In this class there is the definition of all the PWR power plant." .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Simulation
@@ -618,19 +621,13 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Transitory
 :Transitory rdf:type owl:Class ;
-            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 .
+            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
+            rdfs:comment "That class is a description of what is happening and how the parameters are changing as there is a transitory, so a no-steady-state regime." .
 
 
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://www.ap600.com/ontolgies/ap600.owl#OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f
-:OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f rdf:type owl:NamedIndividual ,
-                                                                  :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c ;
-                                                         rdfs:comment "This is the main refrigerant that is used inside a nuclear power plant, especially in a PWR-like power plant. It is used inside the primary loop to keep the core away the melting-down condition and to carry away heat, then exchanging it with the secondary loop coolant through the steam generator." ;
-                                                         rdfs:label "water"@en .
-
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600
 :AP600 rdf:type owl:NamedIndividual ,
@@ -661,6 +658,13 @@
                                                                :hotLeg1 ,
                                                                :steamGenerator1 ,
                                                                :waterPump1 .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f
+:OWLNamedIndividual_ecf19333_cfff_4f43_a698_3d8202bf438f rdf:type owl:NamedIndividual ,
+                                                                  :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c ;
+                                                         rdfs:comment "This is the main refrigerant that is used inside a nuclear power plant, especially in a PWR-like power plant. It is used inside the primary loop to keep the core away the melting-down condition and to carry away heat, then exchanging it with the secondary loop coolant through the steam generator." ;
+                                                         rdfs:label "water"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS1
