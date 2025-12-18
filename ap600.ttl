@@ -102,35 +102,6 @@
 #    Data properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasElectricPower
-:hasElectricPower rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasGeneratorOutputPower
-:hasGeneratorOutputPower rdf:type owl:DatatypeProperty ;
-                         rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                         rdfs:label "hasOutputPower" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasNuclearPower
-:hasNuclearPower rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
-                 rdfs:label "hasNuclearPower"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasThermalPower
-:hasThermalPower rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
-                 rdfs:label "hasThermalPower" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasTotalReactivity
-:hasTotalReactivity rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                    rdfs:label "hasTotalReactivity" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
 :OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
@@ -159,12 +130,12 @@
 :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                                                       rdfs:range xsd:double ;
-                                                      rdfs:label "powerValue"@en .
+                                                      rdfs:label "hasPowerValue"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246
 :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 rdf:type owl:DatatypeProperty ;
-                                                      rdfs:label "physicalQuantity"@en .
+                                                      rdfs:label "hasPhysicalQuantity"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45
@@ -173,6 +144,35 @@
                                                       rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
                                                       rdfs:range xsd:double ;
                                                       rdfs:label "hasCoreFlow"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasElectricPower
+:hasElectricPower rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasGeneratorOutputPower
+:hasGeneratorOutputPower rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                         rdfs:label "hasOutputPower" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasNuclearPower
+:hasNuclearPower rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
+                 rdfs:label "hasNuclearPower"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasThermalPower
+:hasThermalPower rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
+                 rdfs:label "hasThermalPower" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasTotalReactivity
+:hasTotalReactivity rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                    rdfs:label "hasTotalReactivity" .
 
 
 #################################################################
