@@ -102,12 +102,41 @@
 #    Data properties
 #################################################################
 
+###  http://www.ap600.com/ontolgies/ap600.owl#hasElectricPower
+:hasElectricPower rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasGeneratorOutputPower
+:hasGeneratorOutputPower rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                         rdfs:label "hasOutputPower" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasNuclearPower
+:hasNuclearPower rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
+                 rdfs:label "hasNuclearPower"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasThermalPower
+:hasThermalPower rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
+                 rdfs:label "hasThermalPower" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#hasTotalReactivity
+:hasTotalReactivity rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                    rdfs:label "hasTotalReactivity" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
 :OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                                                       rdfs:domain :OWLClass_83f429c0_9a9c_472a_9e05_b5885353868c ;
                                                       rdfs:range xsd:double ;
-                                                      rdfs:label "coolantPressure"@en .
+                                                      rdfs:label "hasCoolantPressure"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1
@@ -115,15 +144,7 @@
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                                                       rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
                                                       rdfs:range xsd:double ;
-                                                      rdfs:label "fuelAverageT"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_8a218676_5056_4e69_8ac8_00c7c805ea6d
-:OWLDataProperty_8a218676_5056_4e69_8ac8_00c7c805ea6d rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-                                                      rdfs:range xsd:double ;
-                                                      rdfs:label "coreLevel"@en .
+                                                      rdfs:label "hasFuelAverageT"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5
@@ -131,7 +152,7 @@
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                                                       rdfs:domain :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
                                                       rdfs:range xsd:double ;
-                                                      rdfs:label "rpm"@en .
+                                                      rdfs:label "hasSpeed(RPM)"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d
@@ -151,7 +172,7 @@
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                                                       rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
                                                       rdfs:range xsd:double ;
-                                                      rdfs:label "coreFlow"@en .
+                                                      rdfs:label "hasCoreFlow"@en .
 
 
 #################################################################
