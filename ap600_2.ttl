@@ -85,25 +85,6 @@
 #    Data properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasBoronConcetration
-:hasBoronConcetration rdf:type owl:DatatypeProperty ;
-                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                      rdfs:comment "unit of measurement (ppm)" ;
-                      rdfs:label "hasBoronConcentration" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasDataInstants
-:hasDataInstants rdf:type owl:DatatypeProperty ;
-                 rdfs:comment "unit of measurement (s)" ;
-                 rdfs:label "hasDataInstants" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasScramActivation
-:hasScramActivation rdf:type owl:DatatypeProperty ;
-                    rdfs:comment "SCRAM activation state (0 = inactive; 1 = active)" ;
-                    rdfs:label "hasScramActivation" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
 :OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
@@ -152,6 +133,19 @@
                                                       rdfs:label "hasCoreFlow"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasBoronConcetration
+:hasBoronConcetration rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                      rdfs:comment "unit of measurement (ppm)" ;
+                      rdfs:label "hasBoronConcentration" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasDataInstants
+:hasDataInstants rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "unit of measurement (s)" ;
+                 rdfs:label "hasDataInstants" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasElectricPower
 :hasElectricPower rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
@@ -173,6 +167,12 @@
                  rdfs:label "hasNeutronPower"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasScramActivation
+:hasScramActivation rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "SCRAM activation state (0 = inactive; 1 = active)" ;
+                    rdfs:label "hasScramActivation" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasThermalPower
 :hasThermalPower rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
@@ -190,6 +190,12 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.ap600.com/ontolgies/ap600.owl#turbineTrip
+:turbineTrip rdf:type owl:Class ;
+             rdfs:subClassOf :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff ;
+             rdfs:label "TurbineTrip" .
+
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_01fe8cb0_ffd7_4f85_8651_45cf87e11f11
 :OWLClass_01fe8cb0_ffd7_4f85_8651_45cf87e11f11 rdf:type owl:Class ;
@@ -266,11 +272,6 @@
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_5d106a1c_4f01_4ca6_810a_36779df31578
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_ec8fce6c_8f6f_41cb_b10b_702489e9450a
                                                                ] ;
                                                rdfs:comment "That is the superclass that contains all the loops of the system." ;
@@ -298,17 +299,6 @@
 :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_e19610ce_60b2_44cd_9991_04e6077310a2 ;
                                                rdfs:label "Leg"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_5d106a1c_4f01_4ca6_810a_36779df31578
-:OWLClass_5d106a1c_4f01_4ca6_810a_36779df31578 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_a10da7c6_834a_44cb_b412_919d8af76db7 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f
-                                                               ] ;
-                                               rdfs:label "WaterPump"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3
@@ -379,12 +369,6 @@
                                                rdfs:label "VesselDowncomer"@it .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_a10da7c6_834a_44cb_b412_919d8af76db7
-:OWLClass_a10da7c6_834a_44cb_b412_919d8af76db7 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-                                               rdfs:label "Pump"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff
 :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
@@ -425,12 +409,6 @@
                                                rdfs:label "Pipe"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_e93e0e92_d3d6_4d6a_a175_ce4ab4a0e9a4
-:OWLClass_e93e0e92_d3d6_4d6a_a175_ce4ab4a0e9a4 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_a10da7c6_834a_44cb_b412_919d8af76db7 ;
-                                               rdfs:label "ReactorCoolingPump"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_ebbc0803_2dd0_482e_8614_e9ac18ae6620
 :OWLClass_ebbc0803_2dd0_482e_8614_e9ac18ae6620 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_4d27d61f_6c98_480e_b43f_ebf224534923 ;
@@ -453,13 +431,6 @@
                                                rdfs:label "HotLeg"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_f02668d4_f74c_4902_a7b8_b2191d3f041a
-:OWLClass_f02668d4_f74c_4902_a7b8_b2191d3f041a rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
-                                               rdfs:comment "One of the modality at which the reactor can be setted for studying the behaviour during the simulation. In this condition, there is a turbine detachment due to the fact that the rpm are less than 1800." ;
-                                               rdfs:label "TurbineTrip"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
 :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ;
@@ -474,50 +445,45 @@
                   "In this class there is the definition of all the PWR power plant." .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/Transitory
-:Transitory rdf:type owl:Class ;
-            rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
-            rdfs:comment "That class is a description of what is happening and how the parameters are changing as there is a transitory, so a no-steady-state regime." .
-
-
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Turbine1
-:Turbine1 rdf:type owl:NamedIndividual ,
-                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" .
+###  http://www.ap600.com/ontolgies/ap600.owl#AP600_2
+:AP600_2 rdf:type owl:NamedIndividual ,
+                  :PWR ;
+         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core2 ;
+         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+         rdfs:label "AP600_2" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#electricGenerator1
-:electricGenerator1 rdf:type owl:NamedIndividual ,
-                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
-                    :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                    :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" ;
-                    rdfs:label "electricGenerator1" .
+###  http://www.ap600.com/ontolgies/ap600.owl#Core2
+:Core2 rdf:type owl:NamedIndividual ,
+                :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
+       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+       rdfs:label "Core2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600
 :AP600 rdf:type owl:NamedIndividual ,
                 :PWR ;
-       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Turbine1 ,
-                                                               :electricGenerator1 ,
-                                                               :Core1 ,
+       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core1 ,
                                                                :RCS1 ,
-                                                               :Vessel1 ;
+                                                               :Turbine1 ,
+                                                               :Vessel1 ,
+                                                               :electricGenerator1 ;
        :hasBehaviour :LOCA1 ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" .
+       :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" ;
+       rdfs:label "AP600_1" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core1
 :Core1 rdf:type owl:NamedIndividual ,
                 :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
        :OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1 "[484; 484; 485; 453; 292; 268; 238; 264]" ;
        :OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45 "[9206; 9053; 8690; 8914; 8959; 6510; 162; 229]" ;
+       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
        :hasNuclearPower "[100; 100; 100; 7; 0; 0; 0; 0]" ;
        :hasThermalPower "[100; 100; 100; 87; 8; 5; 3; 3]" ;
        :hasTotalReactivity "[0; 0; 0; -119; -197; -192; -187; -191 ]" .
@@ -550,6 +516,13 @@
         :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Turbine1
+:Turbine1 rdf:type owl:NamedIndividual ,
+                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
+          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" ;
+          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel1
 :Vessel1 rdf:type owl:NamedIndividual ,
                   :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae ;
@@ -560,6 +533,14 @@
 :coldLeg1 rdf:type owl:NamedIndividual ,
                    :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator1
+:electricGenerator1 rdf:type owl:NamedIndividual ,
+                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
+                    :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+                    :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" ;
+                    rdfs:label "electricGenerator1" .
 
 
 #################################################################
