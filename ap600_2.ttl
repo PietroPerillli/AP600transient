@@ -12,6 +12,16 @@
 #    Object Properties
 #################################################################
 
+###  http://www.ap600.com/ontolgies/ap600.owl#hasMerealCausalityRelation
+:hasMerealCausalityRelation rdf:type owl:ObjectProperty ;
+                            rdfs:label "hasMerealCausalityRelation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl#precedes
+:precedes rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasMerealCausalityRelation .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
 :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e rdf:type owl:ObjectProperty ;
                                                         rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
@@ -73,12 +83,6 @@
 #################################################################
 #    Data properties
 #################################################################
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasTripActivation
-:hasTripActivation rdf:type owl:DatatypeProperty ;
-                   rdfs:comment "Turbine Trip activation state (0 = inactive; 1 = active)" ;
-                   rdfs:label "hasTripActivation" .
-
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
 :OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
@@ -181,6 +185,13 @@
                     rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
                     rdfs:comment "unit of measurement (mk)" ;
                     rdfs:label "hasTotalReactivity" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasTripActivation
+:hasTripActivation rdf:type owl:DatatypeProperty ;
+                   rdfs:comment "Turbine Trip activation state (0 = inactive; 1 = active)" ;
+                   rdfs:label "hasTripActivation" ,
+                              "hasTurbineTripActivation" .
 
 
 #################################################################
@@ -445,66 +456,19 @@
 #    Individuals
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#LOCA2
-:LOCA2 rdf:type owl:NamedIndividual ,
-                :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
-       :hasStage :SCRAM2 ;
-       rdfs:label "LOCA2" .
+###  http://www.ap600.com/ontolgies/ap600.owl#TurbineTrip1
+:TurbineTrip1 rdf:type owl:NamedIndividual ,
+                       :turbineTrip ;
+              :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+              :hasTripActivation "[0; 0; 0; 0; 0; 1; 1; 1]" ;
+              rdfs:label "TurbineTrip1" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl#Loop2
-:Loop2 rdf:type owl:NamedIndividual ,
-                :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
-       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :coldLeg2 ;
-       :hasBoronConcetration "[209; 209; 209; 209; 209; 208; 203; 150; 95]" ;
-       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       rdfs:label "Loop2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#RCS2
-:RCS2 rdf:type owl:NamedIndividual ,
-               :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
-      :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Loop2 ;
-      rdfs:label "RCS2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#SCRAM2
-:SCRAM2 rdf:type owl:NamedIndividual ,
-                 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
-        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-        :hasScramActivation "[0; 0; 0; 0; 0; 1; 1; 1; 1]" ;
-        rdfs:label "SCRAM2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#Turbine2
-:Turbine2 rdf:type owl:NamedIndividual ,
-                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-          :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" ;
-          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" ;
-          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-          rdfs:label "Turbine2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#Vessel2
-:Vessel2 rdf:type owl:NamedIndividual ,
-                  :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae ;
-         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-         rdfs:label "Vessel2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#coldLeg2
-:coldLeg2 rdf:type owl:NamedIndividual ,
-                   :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
-          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-          rdfs:label "coldLeg2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#electricGenerator2
-:electricGenerator2 rdf:type owl:NamedIndividual ,
-                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
-                    :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                    :hasElectricPower "[71; 71; 71; 71; 70; 67; 4; 0; 0]" ;
-                    rdfs:label "electricGenerator2" .
+###  http://www.ap600.com/ontolgies/ap600.owl#TurbineTrip2
+:TurbineTrip2 rdf:type owl:NamedIndividual ,
+                       :turbineTrip ;
+              :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+              :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600
@@ -525,11 +489,11 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_2
 :AP600_2 rdf:type owl:NamedIndividual ,
                   :PWR ;
-         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :RCS2 ,
+         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core2 ,
+                                                                 :RCS2 ,
                                                                  :Turbine2 ,
                                                                  :Vessel2 ,
-                                                                 :electricGenerator2 ,
-                                                                 :Core2 ;
+                                                                 :electricGenerator2 ;
          :hasBehaviour :LOCA2 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
          :hasGeneratorOutputPower "[440; 440; 442; 439; 439; 415; 28; 0; 0]" ;
@@ -566,6 +530,13 @@
        :hasStage :SCRAM1 .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/LOCA2
+:LOCA2 rdf:type owl:NamedIndividual ,
+                :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
+       :hasStage :SCRAM2 ;
+       rdfs:label "LOCA2" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop1
 :Loop1 rdf:type owl:NamedIndividual ,
                 :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
@@ -574,25 +545,59 @@
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Loop2
+:Loop2 rdf:type owl:NamedIndividual ,
+                :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
+       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :coldLeg2 ;
+       :hasBoronConcetration "[209; 209; 209; 209; 209; 208; 203; 150; 95]" ;
+       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+       rdfs:label "Loop2" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS1
 :RCS1 rdf:type owl:NamedIndividual ,
                :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Loop1 .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/RCS2
+:RCS2 rdf:type owl:NamedIndividual ,
+               :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
+      :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Loop2 ;
+      rdfs:label "RCS2" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM1
 :SCRAM1 rdf:type owl:NamedIndividual ,
                  :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
+        :precedes :TurbineTrip1 ;
         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
         :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM2
+:SCRAM2 rdf:type owl:NamedIndividual ,
+                 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
+        :precedes :TurbineTrip2 ;
+        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+        :hasScramActivation "[0; 0; 0; 0; 0; 1; 1; 1; 1]" ;
+        rdfs:label "SCRAM2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Turbine1
 :Turbine1 rdf:type owl:NamedIndividual ,
                    :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-          :hasTripActivation "[0; 0; 0; 0; 0; 1; 1; 1]" ;
           :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/Turbine2
+:Turbine2 rdf:type owl:NamedIndividual ,
+                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
+          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" ;
+          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+          :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" ;
+          rdfs:label "Turbine2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel1
@@ -601,10 +606,24 @@
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/Vessel2
+:Vessel2 rdf:type owl:NamedIndividual ,
+                  :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae ;
+         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+         rdfs:label "Vessel2" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg1
 :coldLeg1 rdf:type owl:NamedIndividual ,
                    :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg2
+:coldLeg2 rdf:type owl:NamedIndividual ,
+                   :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
+          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+          rdfs:label "coldLeg2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator1
@@ -613,6 +632,14 @@
                     :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
                     :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" ;
                     rdfs:label "electricGenerator1" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator2
+:electricGenerator2 rdf:type owl:NamedIndividual ,
+                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
+                    :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+                    :hasElectricPower "[71; 71; 71; 71; 70; 67; 4; 0; 0]" ;
+                    rdfs:label "electricGenerator2" .
 
 
 #################################################################
