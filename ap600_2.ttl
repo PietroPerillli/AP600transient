@@ -68,18 +68,6 @@
 #    Data properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#hasColdLegRupture
-:hasColdLegRupture rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf :hasSystemEventState ;
-                   rdfs:comment "Cold Leg state (0 = OK; 1 = Rupture)" ;
-                   rdfs:label "hasColdLegRupture" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#hasSystemEventState
-:hasSystemEventState rdf:type owl:DatatypeProperty ;
-                     rdfs:label "hasSystemEventState" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
 :OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
                                                       rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
@@ -135,6 +123,13 @@
                       rdfs:label "hasBoronConcentration" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasColdLegRupture
+:hasColdLegRupture rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :hasSystemEventState ;
+                   rdfs:comment "Cold Leg state (0 = OK; 1 = Rupture)" ;
+                   rdfs:label "hasColdLegRupture" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasDataInstants
 :hasDataInstants rdf:type owl:DatatypeProperty ;
                  rdfs:comment "unit of measurement (s)" ;
@@ -169,6 +164,11 @@
                     rdfs:label "hasScramActivation" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasSystemEventState
+:hasSystemEventState rdf:type owl:DatatypeProperty ;
+                     rdfs:label "hasSystemEventState" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasThermalPower
 :hasThermalPower rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
@@ -194,27 +194,15 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_01fe8cb0_ffd7_4f85_8651_45cf87e11f11
-:OWLClass_01fe8cb0_ffd7_4f85_8651_45cf87e11f11 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-                                                               ] ;
-                                               rdfs:label "Pressurizer"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
 :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_01fe8cb0_ffd7_4f85_8651_45cf87e11f11
+                                                                 owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
                                                                ] ,
@@ -223,7 +211,29 @@
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb
                                                                ] ;
+                                               rdfs:comment "A class representing the reactor vessel of a PWR. The vessel is the pressure boundary that houses the reactor core and contains the primary coolant during operation. It provides the physical environment for the core and supports the flow of coolant through the reactor to enable heat removal."@en ;
                                                rdfs:label "Vessel"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
+:OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868 rdf:type owl:Class ;
+                                               rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                                                                 owl:someValuesFrom :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :PWR
+                                                               ] ;
+                                               rdfs:comment "That class contains secondary loops, so the secure.one found in a nuclear plant as there is no recyrculation of activated water (at least in normal-operating conditions). Its function is to garantee the electricity production, so the conversion from thermal to electric energy."@en ;
+                                               rdfs:label "SecondaryLoop"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4
@@ -240,17 +250,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f
 :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
-                                                               ] ;
+                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
                                                rdfs:comment "That is the superclass that contains all the loops of the system." ;
                                                rdfs:label "Loop"@en .
 
@@ -259,10 +259,16 @@
 :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5 rdf:type owl:Class ;
                                                rdfs:subClassOf :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ,
                                                                [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
                                                                ] ;
+                                               rdfs:comment "That one is the class that contains all the cold legs, so those legs where there is the water flow that has just given all its heat to the water of the secondary loop. It is used to keep under control the fuel temperature."@en ;
                                                rdfs:label "ColdLeg"@en .
 
 
@@ -283,15 +289,20 @@
                                                rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f
+                                                                 owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
                                                                ] ;
-                                               rdfs:label "Rcs"@en .
+                                               rdfs:comment "A class representing the Reactor Coolant System (RCS) of a Pressurized Water Reactor (PWR). The RCS corresponds to the primary coolant circuit and includes the main components responsible for circulating pressurized water through the reactor vessel and the heat exchange sections. Its function is to remove heat from the reactor core and transfer it to the secondary system."@en ;
+                                               rdfs:label "RCS"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8508fd88_870c_44f8_89a0_3fe85f9e20c3
@@ -313,6 +324,11 @@
                                                                  owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
                                                                ] ;
                                                rdfs:label "ElectricGenerator"@en .
 
@@ -332,7 +348,7 @@
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                                  owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
                                                                ] ;
-                                               rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process." ;
+                                               rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated." ;
                                                rdfs:label "Core"@en .
 
 
@@ -342,7 +358,13 @@
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
                                                                  owl:someValuesFrom :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
                                                                ] ;
+                                               rdfs:comment "A class representing turbines in the PWR secondary system. The turbine converts the thermal energy of steam into mechanical work, which drives the electric generator and enables electricity production."@en ;
                                                rdfs:label "Turbine"@en .
 
 
@@ -354,16 +376,36 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
 :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ;
-                                               rdfs:comment "Every element of this class is a primary loop, so a loop that is connected with the Core." ;
+                                               rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :PWR
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
+                                                               ] ;
+                                               rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control." ;
                                                rdfs:label "PrimaryLoop"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/PWR
 :PWR rdf:type owl:Class ;
-     rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-     rdfs:comment "PWR"@en ,
-                  "In this class there is the definition of all the PWR power plant." .
+     rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
+                     ] ;
+     rdfs:comment "In this class there is the definition of all the PWR power plant, so those power plant where, inside the primary loop, there is only subcooled water (no biphase conditions)."@en ,
+                  "PWR"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/turbineTrip
