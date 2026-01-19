@@ -12,34 +12,16 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e
-:OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e rdf:type owl:ObjectProperty ;
-                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
-                                                        rdf:type owl:SymmetricProperty ;
-                                                        rdfs:label "isConnectedWith"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a
-:OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a rdf:type owl:ObjectProperty ;
-                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
-                                                        owl:inverseOf :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                        rdfs:label "isComponentOf"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010
-:OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 rdf:type owl:ObjectProperty ;
-                                                        rdfs:subPropertyOf :OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 ;
-                                                        rdfs:label "hasComponent"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584
-:OWLObjectProperty_fa6c3ba2_ff2c_4c3e_9063_cf505ce0c584 rdf:type owl:ObjectProperty ;
-                                                        rdfs:label "hasStructuralRelation"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasBehaviour
 :hasBehaviour rdf:type owl:ObjectProperty ;
               rdfs:label "hasBehaviour" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasComponent
+:hasComponent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasStructuralRelation ;
+              owl:inverseOf :isComponentOf ;
+              rdfs:label "hasComponent"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasMerealCausalityRelation
@@ -57,6 +39,24 @@
           rdfs:label "hasStage" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasStructuralRelation
+:hasStructuralRelation rdf:type owl:ObjectProperty ;
+                       rdfs:label "hasStructuralRelation"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasStructuralRelation ;
+               rdfs:label "isComponentOf"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/isConnectedWith
+:isConnectedWith rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasStructuralRelation ;
+                 rdf:type owl:SymmetricProperty ;
+                 rdfs:label "isConnectedWith"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/precedes
 :precedes rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :hasMerealCausalityRelation ;
@@ -68,56 +68,18 @@
 #    Data properties
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a
-:OWLDataProperty_193f7fc4_134b_4a49_ad10_0ac6666b5b3a rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-                                                      rdfs:comment "unit of measurement (kPa)" ;
-                                                      rdfs:label "hasCoolantPressure"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1
-:OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1 rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-                                                      rdfs:comment "unit of measurement (°C)" ;
-                                                      rdfs:label "hasFuelAverageT"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5
-:OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-                                                      rdfs:comment "unit of measurement (RPM)" ;
-                                                      rdfs:label "hasSpeed"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d
-:OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:range xsd:string ;
-                                                      rdfs:label "hasPowerValue"@en ,
-                                                                 "PowerPercentage" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246
-:OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 rdf:type owl:DatatypeProperty ;
-                                                      rdfs:range xsd:string ;
-                                                      rdfs:label "hasPhysicalQuantity"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45
-:OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45 rdf:type owl:DatatypeProperty ;
-                                                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                                                      rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-                                                      rdfs:comment "unit of measurement (kg/s)" ;
-                                                      rdfs:label "hasCoreFlow"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/PowerPercentage
+:PowerPercentage rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :hasPhysicalQuantity ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "hasPowerValue"@en ,
+                            "PowerPercentage" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasBoronConcetration
 :hasBoronConcetration rdf:type owl:DatatypeProperty ;
-                      rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                      rdfs:domain :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
+                      rdfs:subPropertyOf :hasPhysicalQuantity ;
+                      rdfs:domain :PrimaryLoop ;
                       rdfs:comment "unit of measurement (ppm)" ;
                       rdfs:label "hasBoronConcentration" .
 
@@ -130,6 +92,22 @@
                    rdfs:label "hasColdLegRupture" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasCoolantPressure
+:hasCoolantPressure rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :hasPhysicalQuantity ;
+                    rdfs:domain :Core ;
+                    rdfs:comment "unit of measurement (kPa)" ;
+                    rdfs:label "hasCoolantPressure"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasCoreFlow
+:hasCoreFlow rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :hasPhysicalQuantity ;
+             rdfs:domain :Core ;
+             rdfs:comment "unit of measurement (kg/s)" ;
+             rdfs:label "hasCoreFlow"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasDataInstants
 :hasDataInstants rdf:type owl:DatatypeProperty ;
                  rdfs:range xsd:string ;
@@ -139,33 +117,55 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasElectricPower
 :hasElectricPower rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
-                  rdfs:domain :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
+                  rdfs:subPropertyOf :PowerPercentage ;
+                  rdfs:domain :ElectricGenerator ;
                   rdfs:comment "%" ;
                   rdfs:label "hasElectricPower" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/hasFuelAverageT
+:hasFuelAverageT rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :hasPhysicalQuantity ;
+                 rdfs:domain :Core ;
+                 rdfs:comment "unit of measurement (°C)" ;
+                 rdfs:label "hasFuelAverageT"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasGeneratorOutputPower
 :hasGeneratorOutputPower rdf:type owl:DatatypeProperty ;
-                         rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
+                         rdfs:subPropertyOf :hasPhysicalQuantity ;
                          rdfs:comment "unit of measurement (Mw)" ;
                          rdfs:label "hasOutputPower" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/hasNuclearPower
-:hasNuclearPower rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
-                 rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
+###  http://www.ap600.com/ontolgies/ap600.owl/hasNeutronPower
+:hasNeutronPower rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :PowerPercentage ;
+                 rdfs:domain :Core ;
                  rdfs:comment "%" ;
                  rdfs:label "hasNeutronPower"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasPhysicalQuantity
+:hasPhysicalQuantity rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "hasPhysicalQuantity"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasScramActivation
 :hasScramActivation rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf :hasSystemEventState ;
-                    rdfs:domain :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
+                    rdfs:domain :ScramCondition ;
                     rdfs:comment "SCRAM activation state (0 = inactive; 1 = active)" ;
                     rdfs:label "hasScramActivation" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/hasSpeed
+:hasSpeed rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :hasPhysicalQuantity ;
+          rdfs:domain :Turbine ;
+          rdfs:comment "unit of measurement (RPM)" ;
+          rdfs:label "hasSpeed"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasSystemEventState
@@ -176,16 +176,16 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasThermalPower
 :hasThermalPower rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :OWLDataProperty_d296ff5f_1410_401c_babf_542b6785292d ;
-                 rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
+                 rdfs:subPropertyOf :PowerPercentage ;
+                 rdfs:domain :Core ;
                  rdfs:comment "%" ;
                  rdfs:label "hasThermalPower" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasTotalReactivity
 :hasTotalReactivity rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf :OWLDataProperty_ec5bfa2a_eea6_4899_80e9_9f36a0905246 ;
-                    rdfs:domain :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
+                    rdfs:subPropertyOf :hasPhysicalQuantity ;
+                    rdfs:domain :Core ;
                     rdfs:comment "unit of measurement (mk)" ;
                     rdfs:label "hasTotalReactivity" .
 
@@ -193,7 +193,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasTripActivation
 :hasTripActivation rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf :hasSystemEventState ;
-                   rdfs:domain :turbineTrip ;
+                   rdfs:domain :TurbineTrip ;
                    rdfs:comment "Turbine Trip activation state (0 = inactive; 1 = active)" ;
                    rdfs:label "hasTurbineTripActivation" .
 
@@ -202,239 +202,221 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-:OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
-                                                                 owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb
-                                                               ] ;
-                                               rdfs:comment "A class representing the reactor vessel of a PWR. The vessel is the pressure boundary that houses the reactor core and contains the primary coolant during operation. It provides the physical environment for the core and supports the flow of coolant through the reactor to enable heat removal."@en ;
-                                               rdfs:label "Vessel"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Core
+:Core rdf:type owl:Class ;
+      rdfs:subClassOf :Object ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isComponentOf ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Vessel
+                      ] ;
+      rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated." ;
+      rdfs:label "Core"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
-:OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:someValuesFrom :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d
-                                                               ] ;
-                                               rdfs:comment "That class contains secondary loops, so the secure.one found in a nuclear plant as there is no recyrculation of activated water (at least in normal-operating conditions). Its function is to garantee the electricity production, so the conversion from thermal to electric energy."@en ;
-                                               rdfs:label "SecondaryLoop"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/ElectricGenerator
+:ElectricGenerator rdf:type owl:Class ;
+                   rdfs:subClassOf :Object ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isComponentOf ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :SecondaryLoop
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isConnectedWith ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :Turbine
+                                   ] ;
+                   rdfs:label "ElectricGenerator"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4
-:OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 rdf:type owl:Class ;
-                                               rdfs:label "Object"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/LOCA
+:LOCA rdf:type owl:Class ;
+      rdfs:subClassOf :MalfunctionEvent ;
+      rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM." ;
+      rdfs:label "LOCA"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92
-:OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff ;
-                                               rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions." ;
-                                               rdfs:label "ScramCondition"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Leg
+:Leg rdf:type owl:Class ;
+     rdfs:subClassOf :Pipe ;
+     rdfs:label "Leg"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f
-:OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-                                               rdfs:comment "That is the superclass that contains all the loops of the system." ;
-                                               rdfs:label "Loop"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Loop
+:Loop rdf:type owl:Class ;
+      rdfs:subClassOf :Object ;
+      rdfs:comment "That is the superclass that contains all the loops of the system." ;
+      rdfs:label "Loop"@en .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/MalfunctionEvent
+:MalfunctionEvent rdf:type owl:Class ;
+                  rdfs:subClassOf :Process ;
+                  rdfs:label "MalfunctionEvent"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
 :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ,
+                                               rdfs:subClassOf :Leg ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
+                                                                 owl:onProperty :isComponentOf ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
+                                                                 owl:onClass :RCS
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
+                                                                 owl:onProperty :isConnectedWith ;
                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
+                                                                 owl:onClass :Vessel
                                                                ] ;
                                                rdfs:comment "That one is the class that contains all the cold legs, so those legs where there is the water flow that has just given all its heat to the water of the secondary loop. It is used to keep under control the fuel temperature."@en ;
                                                rdfs:label "ColdLeg"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4
-:OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_e19610ce_60b2_44cd_9991_04e6077310a2 ;
-                                               rdfs:label "Leg"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Object
+:Object rdf:type owl:Class ;
+        rdfs:label "Object"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3
-:OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
-                                               rdfs:label "MalfunctionEvent"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Pipe
+:Pipe rdf:type owl:Class ;
+      rdfs:subClassOf :Object ;
+      rdfs:label "Pipe"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
-:OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-                                                               ] ;
-                                               rdfs:comment "A class representing the Reactor Coolant System (RCS) of a Pressurized Water Reactor (PWR). The RCS corresponds to the primary coolant circuit and includes the main components responsible for circulating pressurized water through the reactor vessel and the heat exchange sections. Its function is to remove heat from the reactor core and transfer it to the secondary system."@en ;
-                                               rdfs:label "RCS"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/PlantCondition
+:PlantCondition rdf:type owl:Class ;
+                rdfs:subClassOf :Process ;
+                rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime." ;
+                rdfs:label "PlantCondition"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8508fd88_870c_44f8_89a0_3fe85f9e20c3
-:OWLClass_8508fd88_870c_44f8_89a0_3fe85f9e20c3 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
-                                               rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM." ;
-                                               rdfs:label "LOCA"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/PrimaryLoop
+:PrimaryLoop rdf:type owl:Class ;
+             rdfs:subClassOf :Loop ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasComponent ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :RCS
+                             ] ;
+             rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control." ;
+             rdfs:label "PrimaryLoop"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979
-:OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 rdf:type owl:Class ;
-                                               rdfs:label "Process"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Process
+:Process rdf:type owl:Class ;
+         rdfs:label "Process"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
-:OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
-                                                               ] ;
-                                               rdfs:label "ElectricGenerator"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/RCS
+:RCS rdf:type owl:Class ;
+     rdfs:subClassOf :Object ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasComponent ;
+                       owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasComponent ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Vessel
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :isComponentOf ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :PrimaryLoop
+                     ] ;
+     rdfs:comment "A class representing the Reactor Coolant System (RCS) of a Pressurized Water Reactor (PWR). The RCS corresponds to the primary coolant circuit and includes the main components responsible for circulating pressurized water through the reactor vessel and the heat exchange sections. Its function is to remove heat from the reactor core and transfer it to the secondary system."@en ;
+     rdfs:label "RCS"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff
-:OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_89b2eaee_563c_4c2e_81bd_51c3130c8979 ;
-                                               rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime." ;
-                                               rdfs:label "PlantCondition"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/ScramCondition
+:ScramCondition rdf:type owl:Class ;
+                rdfs:subClassOf :PlantCondition ;
+                rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions." ;
+                rdfs:label "ScramCondition"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb
-:OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae
-                                                               ] ;
-                                               rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated." ;
-                                               rdfs:label "Core"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/SecondaryLoop
+:SecondaryLoop rdf:type owl:Class ;
+               rdfs:subClassOf :Loop ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasComponent ;
+                                 owl:someValuesFrom :ElectricGenerator
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasComponent ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Turbine
+                               ] ;
+               rdfs:comment "That class contains secondary loops, so the secure.one found in a nuclear plant as there is no recyrculation of activated water (at least in normal-operating conditions). Its function is to garantee the electricity production, so the conversion from thermal to electric energy."@en ;
+               rdfs:label "SecondaryLoop"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d
-:OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e ;
-                                                                 owl:someValuesFrom :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868
-                                                               ] ;
-                                               rdfs:comment "A class representing turbines in the PWR secondary system. The turbine converts the thermal energy of steam into mechanical work, which drives the electric generator and enables electricity production."@en ;
-                                               rdfs:label "Turbine"@en .
+###  http://www.ap600.com/ontolgies/ap600.owl/Turbine
+:Turbine rdf:type owl:Class ;
+         rdfs:subClassOf :Object ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isConnectedWith ;
+                           owl:someValuesFrom :ElectricGenerator
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isComponentOf ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :SecondaryLoop
+                         ] ;
+         rdfs:comment "A class representing turbines in the PWR secondary system. The turbine converts the thermal energy of steam into mechanical work, which drives the electric generator and enables electricity production."@en ;
+         rdfs:label "Turbine"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_e19610ce_60b2_44cd_9991_04e6077310a2
-:OWLClass_e19610ce_60b2_44cd_9991_04e6077310a2 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_3b7deb6c_08a0_4075_86d6_9046f62b71a4 ;
-                                               rdfs:label "Pipe"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3
-:OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 rdf:type owl:Class ;
-                                               rdfs:subClassOf :OWLClass_4e56d642_d043_4e38_a64e_a1cf6ca6b89f ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6
-                                                               ] ;
-                                               rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control." ;
-                                               rdfs:label "PrimaryLoop"@en .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/turbineTrip
-:turbineTrip rdf:type owl:Class ;
-             rdfs:subClassOf :OWLClass_bb9a01a2_7219_4b59_9c21_726aa33325ff ;
+###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip
+:TurbineTrip rdf:type owl:Class ;
+             rdfs:subClassOf :PlantCondition ;
              rdfs:label "TurbineTrip" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/Vessel
+:Vessel rdf:type owl:Class ;
+        rdfs:subClassOf :Object ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isConnectedWith ;
+                          owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasComponent ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Core
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isComponentOf ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :RCS
+                        ] ;
+        rdfs:comment "A class representing the reactor vessel of a PWR. The vessel is the pressure boundary that houses the reactor core and contains the primary coolant during operation. It provides the physical environment for the core and supports the flow of coolant through the reactor to enable heat removal."@en ;
+        rdfs:label "Vessel"@en .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#SecondaryLoop1
-:SecondaryLoop1 rdf:type owl:NamedIndividual ,
-                         :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868 ;
-                :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :AP600 ;
-                :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Turbine1 ;
-                :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                rdfs:label "SecondaryLoop1" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl#SecondaryLoop2
-:SecondaryLoop2 rdf:type owl:NamedIndividual ,
-                         :OWLClass_25823c84_7cd9_4a04_9dc0_40092ba1b868 ;
-                :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :AP600_2 ;
-                :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Turbine2 ;
-                :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                rdfs:label "SecondaryLoop2" .
-
-
-###  http://www.ap600.com/ontolgies/ap600.owl/AP600
-:AP600 rdf:type owl:NamedIndividual ;
-       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :SecondaryLoop1 ,
-                                                               :Loop1 ,
-                                                               :electricGenerator1 ;
-       :hasBehaviour :LOCA1 ;
-       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" ;
-       rdfs:comment "The values annotated with \"1\" stay for Sim1" ;
-       rdfs:label "AP600_1" .
+###  http://www.ap600.com/ontolgies/ap600.owl/AP600_1
+:AP600_1 rdf:type owl:NamedIndividual ;
+         :hasBehaviour :LOCA1 ;
+         :hasComponent :Loop1 ,
+                       :SecondaryLoop1 ,
+                       :electricGenerator1 ;
+         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+         :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" ;
+         rdfs:comment "The values annotated with \"1\" stay for Sim1" ;
+         rdfs:label "AP600_1" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_2
 :AP600_2 rdf:type owl:NamedIndividual ;
-         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :SecondaryLoop2 ,
-                                                                 :Loop2 ,
-                                                                 :electricGenerator2 ;
          :hasBehaviour :LOCA2 ;
+         :hasComponent :Loop2 ,
+                       :SecondaryLoop2 ,
+                       :electricGenerator2 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
          :hasGeneratorOutputPower "[440; 440; 442; 439; 439; 415; 28; 0; 0]" ;
          rdfs:comment "The values with \"2\" stay for SIM2" ;
@@ -443,24 +425,24 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core1
 :Core1 rdf:type owl:NamedIndividual ,
-                :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-       :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :Vessel1 ;
-       :OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1 "[484; 484; 485; 453; 292; 268; 238; 264]" ;
-       :OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45 "[9206; 9053; 8690; 8914; 8959; 6510; 162; 229]" ;
+                :Core ;
+       :isComponentOf :Vessel1 ;
+       :hasCoreFlow "[9206; 9053; 8690; 8914; 8959; 6510; 162; 229]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       :hasNuclearPower "[100; 100; 100; 7; 0; 0; 0; 0]" ;
+       :hasFuelAverageT "[484; 484; 485; 453; 292; 268; 238; 264]" ;
+       :hasNeutronPower "[100; 100; 100; 7; 0; 0; 0; 0]" ;
        :hasThermalPower "[100; 100; 100; 87; 8; 5; 3; 3]" ;
        :hasTotalReactivity "[0; 0; 0; -119; -197; -192; -187; -191 ]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core2
 :Core2 rdf:type owl:NamedIndividual ,
-                :OWLClass_df05f0dd_eadc_4ce9_afc2_5dd09630f2cb ;
-       :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :Vessel2 ;
-       :OWLDataProperty_5ec6f6c6_c633_4ca0_8553_53b7269edeb1 "[418; 419; 419; 418; 418; 297; 269; 235; 259]" ;
-       :OWLDataProperty_f16645f1_1894_49cd_adf3_853a7bbf9d45 "[9053; 9053; 8947; 8913; 8939; 8784; 6506; 162; 200]" ;
+                :Core ;
+       :isComponentOf :Vessel2 ;
+       :hasCoreFlow "[9053; 9053; 8947; 8913; 8939; 8784; 6506; 162; 200]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       :hasNuclearPower "[69; 69; 69; 68; 68; 0; 0; 0; 0]" ;
+       :hasFuelAverageT "[418; 419; 419; 418; 418; 297; 269; 235; 259]" ;
+       :hasNeutronPower "[69; 69; 69; 68; 68; 0; 0; 0; 0]" ;
        :hasThermalPower "[70; 70; 70; 69; 70; 14; 5; 3; 2]" ;
        :hasTotalReactivity "[0; 0; 0; 0; 0; -195; -194; -181; -178]" ;
        rdfs:label "Core2" .
@@ -468,7 +450,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/LOCA1
 :LOCA1 rdf:type owl:NamedIndividual ,
-                :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
+                :MalfunctionEvent ;
        :hasStage :SCRAM1 ,
                  :TurbineTrip1 ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
@@ -476,7 +458,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/LOCA2
 :LOCA2 rdf:type owl:NamedIndividual ,
-                :OWLClass_625fe6eb_e8f9_477a_b3c8_a4800c2a41b3 ;
+                :MalfunctionEvent ;
        :hasStage :SCRAM2 ,
                  :TurbineTrip2 ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
@@ -485,8 +467,8 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop1
 :Loop1 rdf:type owl:NamedIndividual ,
-                :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
-       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :RCS1 ;
+                :PrimaryLoop ;
+       :hasComponent :RCS1 ;
        :hasBoronConcetration "[213; 213; 213; 213; 212; 210; 199; 188]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
        rdfs:label "PrimaryLoop1" .
@@ -494,8 +476,8 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop2
 :Loop2 rdf:type owl:NamedIndividual ,
-                :OWLClass_fa066c49_d8e9_473c_918f_8d8dd41d27f3 ;
-       :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :RCS2 ;
+                :PrimaryLoop ;
+       :hasComponent :RCS2 ;
        :hasBoronConcetration "[209; 209; 209; 209; 209; 208; 203; 150; 95]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
        rdfs:label "PrimaryLoop2" .
@@ -503,24 +485,24 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS1
 :RCS1 rdf:type owl:NamedIndividual ,
-               :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
-      :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Vessel1 ,
-                                                              :coldLeg1 ;
+               :RCS ;
+      :hasComponent :Vessel1 ,
+                    :coldLeg1 ;
       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS2
 :RCS2 rdf:type owl:NamedIndividual ,
-               :OWLClass_7395ba97_5742_4407_ad7a_0e6b34d71aa6 ;
-      :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Vessel2 ,
-                                                              :coldLeg2 ;
+               :RCS ;
+      :hasComponent :Vessel2 ,
+                    :coldLeg2 ;
       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
       rdfs:label "RCS2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM1
 :SCRAM1 rdf:type owl:NamedIndividual ,
-                 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
+                 :ScramCondition ;
         :precedes :TurbineTrip1 ;
         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
         :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" .
@@ -528,35 +510,53 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM2
 :SCRAM2 rdf:type owl:NamedIndividual ,
-                 :OWLClass_4d11603a_97e6_4b96_94ce_5266f69ade92 ;
+                 :ScramCondition ;
         :precedes :TurbineTrip2 ;
         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
         :hasScramActivation "[0; 0; 0; 0; 0; 1; 1; 1; 1]" ;
         rdfs:label "SCRAM2" .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/SecondaryLoop1
+:SecondaryLoop1 rdf:type owl:NamedIndividual ,
+                         :SecondaryLoop ;
+                :hasComponent :Turbine1 ;
+                :isComponentOf :AP600_1 ;
+                :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+                rdfs:label "SecondaryLoop1" .
+
+
+###  http://www.ap600.com/ontolgies/ap600.owl/SecondaryLoop2
+:SecondaryLoop2 rdf:type owl:NamedIndividual ,
+                         :SecondaryLoop ;
+                :hasComponent :Turbine2 ;
+                :isComponentOf :AP600_2 ;
+                :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+                rdfs:label "SecondaryLoop2" .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Turbine1
 :Turbine1 rdf:type owl:NamedIndividual ,
-                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-          :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e :electricGenerator1 ;
-          :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :SecondaryLoop1 ;
-          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" ;
-          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+                   :Turbine ;
+          :isComponentOf :SecondaryLoop1 ;
+          :isConnectedWith :electricGenerator1 ;
+          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+          :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Turbine2
 :Turbine2 rdf:type owl:NamedIndividual ,
-                   :OWLClass_e1197e1a_3bef_486f_82bf_62f81760d73d ;
-          :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e :electricGenerator2 ;
-          :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :SecondaryLoop2 ;
-          :OWLDataProperty_c1eb7aa7_77ca_4ef0_8353_80b91c8e48c5 "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" ;
+                   :Turbine ;
+          :isComponentOf :SecondaryLoop2 ;
+          :isConnectedWith :electricGenerator2 ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+          :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" ;
           rdfs:label "Turbine2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip1
 :TurbineTrip1 rdf:type owl:NamedIndividual ,
-                       :turbineTrip ;
+                       :TurbineTrip ;
               :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
               :hasTripActivation "[0; 0; 0; 0; 0; 1; 1; 1]" ;
               rdfs:label "TurbineTrip1" .
@@ -564,38 +564,38 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip2
 :TurbineTrip2 rdf:type owl:NamedIndividual ,
-                       :turbineTrip ;
+                       :TurbineTrip ;
               :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
               :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel1
 :Vessel1 rdf:type owl:NamedIndividual ,
-                  :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae ;
-         :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :RCS1 ;
-         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core1 ;
+                  :Vessel ;
+         :hasComponent :Core1 ;
+         :isComponentOf :RCS1 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel2
 :Vessel2 rdf:type owl:NamedIndividual ,
-                  :OWLClass_1daaabc9_7f90_419c_ab53_53fa455022ae ;
-         :OWLObjectProperty_05d9c1a5_0887_4d42_a902_6eccb870576a :RCS2 ;
-         :OWLObjectProperty_37f7e451_9399_4cfe_8f21_719ea8156010 :Core2 ;
+                  :Vessel ;
+         :hasComponent :Core2 ;
+         :isComponentOf :RCS2 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
          rdfs:label "Vessel2" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg1
 :coldLeg1 rdf:type owl:NamedIndividual ,
-                   :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
+                   :Leg ;
           :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;" ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg2
 :coldLeg2 rdf:type owl:NamedIndividual ,
-                   :OWLClass_5a58358e_3b10_41a9_be38_038567f2eaa4 ;
+                   :Leg ;
           :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;" ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
           rdfs:label "coldLeg2" .
@@ -603,8 +603,8 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator1
 :electricGenerator1 rdf:type owl:NamedIndividual ,
-                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
-                    :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e :Turbine1 ;
+                             :ElectricGenerator ;
+                    :isConnectedWith :Turbine1 ;
                     :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
                     :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" ;
                     rdfs:label "electricGenerator1" .
@@ -612,8 +612,8 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator2
 :electricGenerator2 rdf:type owl:NamedIndividual ,
-                             :OWLClass_8c79cd12_aa3e_4ac9_aacd_4b49e55afc01 ;
-                    :OWLObjectProperty_01ecce34_7362_4151_ad03_fea13f3a817e :Turbine2 ;
+                             :ElectricGenerator ;
+                    :isConnectedWith :Turbine2 ;
                     :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
                     :hasElectricPower "[71; 71; 71; 71; 70; 67; 4; 0; 0]" ;
                     rdfs:label "electricGenerator2" .
