@@ -202,21 +202,6 @@
 #    Classes
 #################################################################
 
-###  http://www.ap600.com/ontolgies/ap600.owl#OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
-:OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf rdf:type owl:Class ;
-                                               rdfs:subClassOf :Object ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :hasComponent ;
-                                                                 owl:allValuesFrom :PrimaryLoop
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :hasComponent ;
-                                                                 owl:allValuesFrom :SecondaryLoop
-                                                               ] ;
-                                               rdfs:comment "A class that contains all the PWR types and configurations."@en ;
-                                               rdfs:label "PWR"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/ColdLeg
 :ColdLeg rdf:type owl:Class ;
          rdfs:subClassOf :Leg ,
@@ -288,6 +273,21 @@
         rdfs:label "Object"@en .
 
 
+###  http://www.ap600.com/ontolgies/ap600.owl/PWR
+:PWR rdf:type owl:Class ;
+     rdfs:subClassOf :Object ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasComponent ;
+                       owl:allValuesFrom :PrimaryLoop
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasComponent ;
+                       owl:allValuesFrom :SecondaryLoop
+                     ] ;
+     rdfs:comment "A class that contains all the PWR types and configurations."@en ;
+     rdfs:label "PWR"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Pipe
 :Pipe rdf:type owl:Class ;
       rdfs:subClassOf :Object ;
@@ -306,7 +306,7 @@
              rdfs:subClassOf :Loop ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :isComponentOf ;
-                               owl:allValuesFrom :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
+                               owl:allValuesFrom :PWR
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :hasComponent ;
@@ -355,7 +355,7 @@
                rdfs:subClassOf :Loop ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :isComponentOf ;
-                                 owl:allValuesFrom :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
+                                 owl:allValuesFrom :PWR
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :hasComponent ;
@@ -415,7 +415,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_1
 :AP600_1 rdf:type owl:NamedIndividual ,
-                  :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf ;
+                  :PWR ;
          :hasBehaviour :LOCA1 ;
          :hasComponent :Loop1 ,
                        :SecondaryLoop1 ,
@@ -428,7 +428,7 @@
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_2
 :AP600_2 rdf:type owl:NamedIndividual ,
-                  :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf ;
+                  :PWR ;
          :hasBehaviour :LOCA2 ;
          :hasComponent :Loop2 ,
                        :SecondaryLoop2 ,
