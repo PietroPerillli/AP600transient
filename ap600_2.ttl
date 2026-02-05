@@ -202,6 +202,21 @@
 #    Classes
 #################################################################
 
+###  http://www.ap600.com/ontolgies/ap600.owl#OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
+:OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf rdf:type owl:Class ;
+                                               rdfs:subClassOf :Object ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hasComponent ;
+                                                                 owl:allValuesFrom :PrimaryLoop
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hasComponent ;
+                                                                 owl:allValuesFrom :SecondaryLoop
+                                                               ] ;
+                                               rdfs:comment "A class that contains all the PWR types and configurations."@en ;
+                                               rdfs:label "PWR"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/ColdLeg
 :ColdLeg rdf:type owl:Class ;
          rdfs:subClassOf :Leg ,
@@ -227,7 +242,7 @@
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                         owl:onClass :Vessel
                       ] ;
-      rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated." ;
+      rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated."@en ;
       rdfs:label "Core"@en .
 
 
@@ -235,13 +250,8 @@
 :ElectricGenerator rdf:type owl:Class ;
                    rdfs:subClassOf :Object ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty :isComponentOf ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                     owl:onClass :SecondaryLoop
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
                                      owl:onProperty :isConnectedWith ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass :Turbine
                                    ] ;
                    rdfs:label "ElectricGenerator"@en .
@@ -250,7 +260,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/LOCA
 :LOCA rdf:type owl:Class ;
       rdfs:subClassOf :MalfunctionEvent ;
-      rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM." ;
+      rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM."@en ;
       rdfs:label "LOCA"@en .
 
 
@@ -263,7 +273,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop
 :Loop rdf:type owl:Class ;
       rdfs:subClassOf :Object ;
-      rdfs:comment "That is the superclass that contains all the loops of the system." ;
+      rdfs:comment "That is the superclass that contains all the loops of the system."@en ;
       rdfs:label "Loop"@en .
 
 
@@ -287,7 +297,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/PlantCondition
 :PlantCondition rdf:type owl:Class ;
                 rdfs:subClassOf :Process ;
-                rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime." ;
+                rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime."@en ;
                 rdfs:label "PlantCondition"@en .
 
 
@@ -295,11 +305,15 @@
 :PrimaryLoop rdf:type owl:Class ;
              rdfs:subClassOf :Loop ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :isComponentOf ;
+                               owl:allValuesFrom :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :hasComponent ;
                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onClass :RCS
                              ] ;
-             rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control." ;
+             rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control."@en ;
              rdfs:label "PrimaryLoop"@en .
 
 
@@ -332,7 +346,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/ScramCondition
 :ScramCondition rdf:type owl:Class ;
                 rdfs:subClassOf :PlantCondition ;
-                rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions." ;
+                rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions."@en ;
                 rdfs:label "ScramCondition"@en .
 
 
@@ -340,8 +354,8 @@
 :SecondaryLoop rdf:type owl:Class ;
                rdfs:subClassOf :Loop ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasComponent ;
-                                 owl:someValuesFrom :ElectricGenerator
+                                 owl:onProperty :isComponentOf ;
+                                 owl:allValuesFrom :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :hasComponent ;
@@ -371,7 +385,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip
 :TurbineTrip rdf:type owl:Class ;
              rdfs:subClassOf :PlantCondition ;
-             rdfs:label "TurbineTrip" .
+             rdfs:label "TurbineTrip"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel
@@ -400,27 +414,29 @@
 #################################################################
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_1
-:AP600_1 rdf:type owl:NamedIndividual ;
+:AP600_1 rdf:type owl:NamedIndividual ,
+                  :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf ;
          :hasBehaviour :LOCA1 ;
          :hasComponent :Loop1 ,
                        :SecondaryLoop1 ,
                        :electricGenerator1 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
          :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" ;
-         rdfs:comment "The values annotated with \"1\" stay for Sim1" ;
-         rdfs:label "AP600_1" .
+         rdfs:comment "The values annotated with \"1\" stay for Sim1"@en ;
+         rdfs:label "AP600_1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/AP600_2
-:AP600_2 rdf:type owl:NamedIndividual ;
+:AP600_2 rdf:type owl:NamedIndividual ,
+                  :OWLClass_2aaeba72_de00_4ef5_984f_1741d86873bf ;
          :hasBehaviour :LOCA2 ;
          :hasComponent :Loop2 ,
                        :SecondaryLoop2 ,
                        :electricGenerator2 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
          :hasGeneratorOutputPower "[440; 440; 442; 439; 439; 415; 28; 0; 0]" ;
-         rdfs:comment "The values with \"2\" stay for SIM2" ;
-         rdfs:label "AP600_2" .
+         rdfs:comment "The values with \"2\" stay for SIM2"@en ;
+         rdfs:label "AP600_2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core1
@@ -432,7 +448,8 @@
        :hasFuelAverageT "[484; 484; 485; 453; 292; 268; 238; 264]" ;
        :hasNeutronPower "[100; 100; 100; 7; 0; 0; 0; 0]" ;
        :hasThermalPower "[100; 100; 100; 87; 8; 5; 3; 3]" ;
-       :hasTotalReactivity "[0; 0; 0; -119; -197; -192; -187; -191 ]" .
+       :hasTotalReactivity "[0; 0; 0; -119; -197; -192; -187; -191 ]" ;
+       rdfs:label "Core1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core2
@@ -445,7 +462,7 @@
        :hasNeutronPower "[69; 69; 69; 68; 68; 0; 0; 0; 0]" ;
        :hasThermalPower "[70; 70; 70; 69; 70; 14; 5; 3; 2]" ;
        :hasTotalReactivity "[0; 0; 0; 0; 0; -195; -194; -181; -178]" ;
-       rdfs:label "Core2" .
+       rdfs:label "Core2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/LOCA1
@@ -453,7 +470,8 @@
                 :MalfunctionEvent ;
        :hasStage :SCRAM1 ,
                  :TurbineTrip1 ;
-       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+       rdfs:label "LOCA1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/LOCA2
@@ -462,7 +480,7 @@
        :hasStage :SCRAM2 ,
                  :TurbineTrip2 ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       rdfs:label "LOCA2" .
+       rdfs:label "LOCA2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop1
@@ -471,7 +489,7 @@
        :hasComponent :RCS1 ;
        :hasBoronConcetration "[213; 213; 213; 213; 212; 210; 199; 188]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       rdfs:label "PrimaryLoop1" .
+       rdfs:label "PrimaryLoop1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Loop2
@@ -480,7 +498,7 @@
        :hasComponent :RCS2 ;
        :hasBoronConcetration "[209; 209; 209; 209; 209; 208; 203; 150; 95]" ;
        :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-       rdfs:label "PrimaryLoop2" .
+       rdfs:label "PrimaryLoop2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS1
@@ -488,7 +506,8 @@
                :RCS ;
       :hasComponent :Vessel1 ,
                     :coldLeg1 ;
-      :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+      :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+      rdfs:label "RCS1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/RCS2
@@ -497,7 +516,7 @@
       :hasComponent :Vessel2 ,
                     :coldLeg2 ;
       :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-      rdfs:label "RCS2" .
+      rdfs:label "RCS2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM1
@@ -505,7 +524,8 @@
                  :ScramCondition ;
         :precedes :TurbineTrip1 ;
         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-        :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" .
+        :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" ;
+        rdfs:label "SCRAM1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SCRAM2
@@ -514,7 +534,7 @@
         :precedes :TurbineTrip2 ;
         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
         :hasScramActivation "[0; 0; 0; 0; 0; 1; 1; 1; 1]" ;
-        rdfs:label "SCRAM2" .
+        rdfs:label "SCRAM2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SecondaryLoop1
@@ -523,7 +543,7 @@
                 :hasComponent :Turbine1 ;
                 :isComponentOf :AP600_1 ;
                 :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                rdfs:label "SecondaryLoop1" .
+                rdfs:label "SecondaryLoop1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/SecondaryLoop2
@@ -532,7 +552,7 @@
                 :hasComponent :Turbine2 ;
                 :isComponentOf :AP600_2 ;
                 :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-                rdfs:label "SecondaryLoop2" .
+                rdfs:label "SecondaryLoop2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Turbine1
@@ -541,7 +561,8 @@
           :isComponentOf :SecondaryLoop1 ;
           :isConnectedWith :electricGenerator1 ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-          :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" .
+          :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" ;
+          rdfs:label "Turbine1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Turbine2
@@ -551,7 +572,7 @@
           :isConnectedWith :electricGenerator2 ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
           :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" ;
-          rdfs:label "Turbine2" .
+          rdfs:label "Turbine2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip1
@@ -559,14 +580,15 @@
                        :TurbineTrip ;
               :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
               :hasTripActivation "[0; 0; 0; 0; 0; 1; 1; 1]" ;
-              rdfs:label "TurbineTrip1" .
+              rdfs:label "TurbineTrip1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/TurbineTrip2
 :TurbineTrip2 rdf:type owl:NamedIndividual ,
                        :TurbineTrip ;
               :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-              :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" .
+              :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" ;
+              rdfs:label "TurbineTrip2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel1
@@ -574,7 +596,8 @@
                   :Vessel ;
          :hasComponent :Core1 ;
          :isComponentOf :RCS1 ;
-         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+         :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+         rdfs:label "Vessel1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/Vessel2
@@ -583,14 +606,15 @@
          :hasComponent :Core2 ;
          :isComponentOf :RCS2 ;
          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-         rdfs:label "Vessel2" .
+         rdfs:label "Vessel2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg1
 :coldLeg1 rdf:type owl:NamedIndividual ,
                    :Leg ;
           :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;" ;
-          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+          :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
+          rdfs:label "coldLeg1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/coldLeg2
@@ -598,7 +622,7 @@
                    :Leg ;
           :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;" ;
           :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
-          rdfs:label "coldLeg2" .
+          rdfs:label "coldLeg2"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator1
@@ -607,7 +631,7 @@
                     :isConnectedWith :Turbine1 ;
                     :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
                     :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" ;
-                    rdfs:label "electricGenerator1" .
+                    rdfs:label "electricGenerator1"@en .
 
 
 ###  http://www.ap600.com/ontolgies/ap600.owl/electricGenerator2
@@ -616,7 +640,7 @@
                     :isConnectedWith :Turbine2 ;
                     :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" ;
                     :hasElectricPower "[71; 71; 71; 71; 70; 67; 4; 0; 0]" ;
-                    rdfs:label "electricGenerator2" .
+                    rdfs:label "electricGenerator2"@en .
 
 
 #################################################################
