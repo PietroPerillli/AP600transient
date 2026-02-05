@@ -87,7 +87,7 @@
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasColdLegRupture
 :hasColdLegRupture rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf :hasSystemEventState ;
-                   rdfs:domain :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5 ;
+                   rdfs:domain :ColdLeg ;
                    rdfs:comment "Cold Leg state (0 = OK; 1 = Rupture)" ;
                    rdfs:label "hasColdLegRupture" .
 
@@ -202,6 +202,23 @@
 #    Classes
 #################################################################
 
+###  http://www.ap600.com/ontolgies/ap600.owl/ColdLeg
+:ColdLeg rdf:type owl:Class ;
+         rdfs:subClassOf :Leg ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isComponentOf ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :RCS
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isConnectedWith ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Vessel
+                         ] ;
+         rdfs:comment "That one is the class that contains all the cold legs, so those legs where there is the water flow that has just given all its heat to the water of the secondary loop. It is used to keep under control the fuel temperature."@en ;
+         rdfs:label "ColdLeg"@en .
+
+
 ###  http://www.ap600.com/ontolgies/ap600.owl/Core
 :Core rdf:type owl:Class ;
       rdfs:subClassOf :Object ,
@@ -256,23 +273,6 @@
                   rdfs:label "MalfunctionEvent"@en .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
-:OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5 rdf:type owl:Class ;
-                                               rdfs:subClassOf :Leg ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :isComponentOf ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :RCS
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :isConnectedWith ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :Vessel
-                                                               ] ;
-                                               rdfs:comment "That one is the class that contains all the cold legs, so those legs where there is the water flow that has just given all its heat to the water of the secondary loop. It is used to keep under control the fuel temperature."@en ;
-                                               rdfs:label "ColdLeg"@en .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/Object
 :Object rdf:type owl:Class ;
         rdfs:label "Object"@en .
@@ -313,7 +313,7 @@
      rdfs:subClassOf :Object ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hasComponent ;
-                       owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
+                       owl:someValuesFrom :ColdLeg
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hasComponent ;
@@ -379,7 +379,7 @@
         rdfs:subClassOf :Object ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :isConnectedWith ;
-                          owl:someValuesFrom :OWLClass_533b2aea_d873_453c_9e79_d9aa16e133a5
+                          owl:someValuesFrom :ColdLeg
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hasComponent ;
