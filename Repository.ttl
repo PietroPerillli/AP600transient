@@ -1,0 +1,556 @@
+@prefix agg: <http://jena.apache.org/ARQ/function/aggregate#> .
+@prefix : <http://www.ap600.com/ontolgies/ap600.owl/> .
+@prefix sail: <http://www.openrdf.org/config/sail#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix geof: <http://www.opengis.net/def/function/geosparql/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix path: <http://www.ontotext.com/path#> .
+@prefix array: <http://www.w3.org/2005/xpath-functions/array> .
+@prefix apf: <http://jena.apache.org/ARQ/property#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix map: <http://www.w3.org/2005/xpath-functions/map> .
+@prefix sr: <http://www.openrdf.org/config/repository/sail#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix list: <http://jena.apache.org/ARQ/list#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ofn: <http://www.ontotext.com/sparql/functions/> .
+@prefix geoext: <http://rdf.useekm.com/ext#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+@prefix math: <http://www.w3.org/2005/xpath-functions/math> .
+@prefix omgeo: <http://www.ontotext.com/owlim/geo#> .
+
+<http://www.ap600.com/ontolgies/ap600.owl> a owl:Ontology .
+
+:hasBehaviour a owl:ObjectProperty;
+  rdfs:label "hasBehaviour" .
+
+:hasComponent a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasStructuralRelation;
+  owl:inverseOf :isComponentOf;
+  rdfs:label "hasComponent"@en .
+
+:hasStructuralRelation a owl:ObjectProperty;
+  rdfs:label "hasStructuralRelation"@en .
+
+:isComponentOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasStructuralRelation;
+  rdfs:label "isComponentOf"@en .
+
+:hasMerealCausalityRelation a owl:ObjectProperty;
+  rdfs:label "hasMerealCausalityRelation" .
+
+:hasStage a owl:ObjectProperty;
+  rdfs:label "hasStage" .
+
+:isConnectedWith a owl:SymmetricProperty, owl:ObjectProperty;
+  rdfs:subPropertyOf :hasStructuralRelation;
+  rdfs:label "isConnectedWith"@en .
+
+:precedes a owl:TransitiveProperty, owl:ObjectProperty;
+  rdfs:subPropertyOf :hasMerealCausalityRelation;
+  rdfs:label "precedes" .
+
+:PowerPercentage a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:range xsd:string;
+  rdfs:label "hasPowerValue"@en, "PowerPercentage" .
+
+:hasPhysicalQuantity a owl:DatatypeProperty;
+  rdfs:range xsd:string;
+  rdfs:label "hasPhysicalQuantity"@en .
+
+:hasBoronConcetration a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :PrimaryLoop;
+  rdfs:comment "unit of measurement (ppm)";
+  rdfs:label "hasBoronConcentration" .
+
+:PrimaryLoop a owl:Class;
+  rdfs:subClassOf :Loop, _:node7, _:node8, _:node25, _:node26;
+  rdfs:comment "Every element of this class is a primary loop, so a loop that is activated as it inglobes the Vessel and there is the recyrculation of the water that is kept in contact with the fuel rods. There are some other components whose function is to maintain the system under control."@en;
+  rdfs:label "PrimaryLoop"@en .
+
+:hasColdLegRupture a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasSystemEventState;
+  rdfs:domain :ColdLeg;
+  rdfs:comment "Cold Leg state (0 = OK; 1 = Rupture)";
+  rdfs:label "hasColdLegRupture" .
+
+:hasSystemEventState a owl:DatatypeProperty;
+  rdfs:range xsd:string;
+  rdfs:label "hasSystemEventState" .
+
+:ColdLeg a owl:Class;
+  rdfs:subClassOf :Leg, _:node1, _:node2, _:node19, _:node20;
+  rdfs:comment "That one is the class that contains all the cold legs, so those legs where there is the water flow that has just given all its heat to the water of the secondary loop. It is used to keep under control the fuel temperature."@en;
+  rdfs:label "ColdLeg"@en .
+
+:hasCoolantPressure a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :Core;
+  rdfs:comment "unit of measurement (kPa)";
+  rdfs:label "hasCoolantPressure"@en .
+
+:Core a owl:Class;
+  rdfs:subClassOf :Object, _:node3, _:node21;
+  rdfs:comment "Class that contain the core, the physical place where there is the fuel deposition and where there is the fission process. The main heat resource of our system and where almost all the thermal power is erogated."@en;
+  rdfs:label "Core"@en .
+
+:hasCoreFlow a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :Core;
+  rdfs:comment "unit of measurement (kg/s)";
+  rdfs:label "hasCoreFlow"@en .
+
+:hasDataInstants a owl:DatatypeProperty;
+  rdfs:range xsd:string;
+  rdfs:comment "unit of measurement (s)";
+  rdfs:label "hasDataInstants" .
+
+:hasElectricPower a owl:DatatypeProperty;
+  rdfs:subPropertyOf :PowerPercentage;
+  rdfs:domain :ElectricGenerator;
+  rdfs:comment "%";
+  rdfs:label "hasElectricPower" .
+
+:ElectricGenerator a owl:Class;
+  rdfs:subClassOf :Object, _:node4, _:node22;
+  rdfs:label "ElectricGenerator"@en .
+
+:hasFuelAverageT a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :Core;
+  rdfs:comment "unit of measurement (°C)";
+  rdfs:label "hasFuelAverageT"@en .
+
+:hasGeneratorOutputPower a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:comment "unit of measurement (Mw)";
+  rdfs:label "hasOutputPower" .
+
+:hasNeutronPower a owl:DatatypeProperty;
+  rdfs:subPropertyOf :PowerPercentage;
+  rdfs:domain :Core;
+  rdfs:comment "%";
+  rdfs:label "hasNeutronPower"@en .
+
+:hasScramActivation a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasSystemEventState;
+  rdfs:domain :ScramCondition;
+  rdfs:comment "SCRAM activation state (0 = inactive; 1 = active)";
+  rdfs:label "hasScramActivation" .
+
+:ScramCondition a owl:Class;
+  rdfs:subClassOf :PlantCondition;
+  rdfs:comment "Class that describes what happens as there is a scram, so an emergential powerig off of the system due to emergency conditions."@en;
+  rdfs:label "ScramCondition"@en .
+
+:hasSpeed a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :Turbine;
+  rdfs:comment "unit of measurement (RPM)";
+  rdfs:label "hasSpeed"@en .
+
+:Turbine a owl:Class;
+  rdfs:subClassOf :Object, _:node14, _:node15, _:node32, _:node33;
+  rdfs:comment "A class representing turbines in the PWR secondary system. The turbine converts the thermal energy of steam into mechanical work, which drives the electric generator and enables electricity production."@en;
+  rdfs:label "Turbine"@en .
+
+:hasThermalPower a owl:DatatypeProperty;
+  rdfs:subPropertyOf :PowerPercentage;
+  rdfs:domain :Core;
+  rdfs:comment "%";
+  rdfs:label "hasThermalPower" .
+
+:hasTotalReactivity a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasPhysicalQuantity;
+  rdfs:domain :Core;
+  rdfs:comment "unit of measurement (mk)";
+  rdfs:label "hasTotalReactivity" .
+
+:hasTripActivation a owl:DatatypeProperty;
+  rdfs:subPropertyOf :hasSystemEventState;
+  rdfs:domain :TurbineTrip;
+  rdfs:comment "Turbine Trip activation state (0 = inactive; 1 = active)";
+  rdfs:label "hasTurbineTripActivation" .
+
+:TurbineTrip a owl:Class;
+  rdfs:subClassOf :PlantCondition;
+  rdfs:label "TurbineTrip"@en .
+
+:Leg a owl:Class;
+  rdfs:subClassOf :Pipe;
+  rdfs:label "Leg"@en .
+
+_:node1 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+:RCS a owl:Class;
+  rdfs:subClassOf :Object, _:node9, _:node10, _:node11, _:node27, _:node28, _:node29;
+  rdfs:comment "A class representing the Reactor Coolant System (RCS) of a Pressurized Water Reactor (PWR). The RCS corresponds to the primary coolant circuit and includes the main components responsible for circulating pressurized water through the reactor vessel and the heat exchange sections. Its function is to remove heat from the reactor core and transfer it to the secondary system."@en;
+  rdfs:label "RCS"@en .
+
+_:node2 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+:Vessel a owl:Class;
+  rdfs:subClassOf :Object, _:node16, _:node17, _:node18, _:node34, _:node35, _:node36;
+  rdfs:comment "A class representing the reactor vessel of a PWR. The vessel is the pressure boundary that houses the reactor core and contains the primary coolant during operation. It provides the physical environment for the core and supports the flow of coolant through the reactor to enable heat removal."@en;
+  rdfs:label "Vessel"@en .
+
+:Object a owl:Class;
+  rdfs:label "Object"@en .
+
+_:node3 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+_:node4 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:onClass :Turbine;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+:LOCA a owl:Class;
+  rdfs:subClassOf :MalfunctionEvent;
+  rdfs:comment "Loss of Coolant Accident: accident due to a leakage that forces the water not to properly enter inside the core, that results in a coolant level lowering inside that component and then makes some emergency buttons to switch on. It'll result in a SCRAM."@en;
+  rdfs:label "LOCA"@en .
+
+:MalfunctionEvent a owl:Class;
+  rdfs:subClassOf :Process;
+  rdfs:label "MalfunctionEvent"@en .
+
+:Pipe a owl:Class;
+  rdfs:subClassOf :Object;
+  rdfs:label "Pipe"@en .
+
+:Loop a owl:Class;
+  rdfs:subClassOf :Object;
+  rdfs:comment "That is the superclass that contains all the loops of the system."@en;
+  rdfs:label "Loop"@en .
+
+:Process a owl:Class;
+  rdfs:label "Process"@en .
+
+:PWR a owl:Class;
+  rdfs:subClassOf :Object, _:node5, _:node6, _:node23, _:node24;
+  rdfs:comment "A class that contains all the PWR types and configurations."@en;
+  rdfs:label "PWR"@en .
+
+_:node5 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:allValuesFrom :PrimaryLoop .
+
+_:node6 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:allValuesFrom :SecondaryLoop .
+
+:SecondaryLoop a owl:Class;
+  rdfs:subClassOf :Loop, _:node12, _:node13, _:node30, _:node31;
+  rdfs:comment "That class contains secondary loops, so the secure.one found in a nuclear plant as there is no recyrculation of activated water (at least in normal-operating conditions). Its function is to garantee the electricity production, so the conversion from thermal to electric energy."@en;
+  rdfs:label "SecondaryLoop"@en .
+
+:PlantCondition a owl:Class;
+  rdfs:subClassOf :Process;
+  rdfs:comment "Class that rappresents different operating system conditions in a steady-state regime."@en;
+  rdfs:label "PlantCondition"@en .
+
+_:node7 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:allValuesFrom :PWR .
+
+_:node8 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+_:node9 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:someValuesFrom :ColdLeg .
+
+_:node10 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+_:node11 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PrimaryLoop .
+
+_:node12 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:allValuesFrom :PWR .
+
+_:node13 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:onClass :Turbine;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:node14 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:someValuesFrom :ElectricGenerator .
+
+_:node15 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SecondaryLoop .
+
+_:node16 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:someValuesFrom :ColdLeg .
+
+_:node17 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Core .
+
+_:node18 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+:AP600_1 a :PWR, owl:NamedIndividual;
+  rdfs:comment "The values annotated with \"1\" stay for Sim1"@en;
+  rdfs:label "AP600_1"@en;
+  :hasBehaviour :LOCA1;
+  :hasComponent :Loop1, :SecondaryLoop1, :electricGenerator1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasGeneratorOutputPower "[623; 625; 629; 629; 563; 0; 0; 0]" .
+
+:LOCA1 a :MalfunctionEvent, owl:NamedIndividual;
+  rdfs:label "LOCA1"@en;
+  :hasStage :SCRAM1, :TurbineTrip1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:Loop1 a :PrimaryLoop, owl:NamedIndividual;
+  rdfs:label "PrimaryLoop1"@en;
+  :hasComponent :RCS1;
+  :hasBoronConcetration "[213; 213; 213; 213; 212; 210; 199; 188]";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:SecondaryLoop1 a :SecondaryLoop, owl:NamedIndividual;
+  rdfs:label "SecondaryLoop1"@en;
+  :hasComponent :Turbine1;
+  :isComponentOf :AP600_1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:electricGenerator1 a :ElectricGenerator, owl:NamedIndividual;
+  rdfs:label "electricGenerator1"@en;
+  :isConnectedWith :Turbine1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasElectricPower "[100; 101; 101; 101; 91; 0; 0; 0]" .
+
+:AP600_2 a :PWR, owl:NamedIndividual;
+  rdfs:comment "The values with \"2\" stay for SIM2"@en;
+  rdfs:label "AP600_2"@en;
+  :hasBehaviour :LOCA2;
+  :hasComponent :Loop2, :SecondaryLoop2, :electricGenerator2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasGeneratorOutputPower "[440; 440; 442; 439; 439; 415; 28; 0; 0]" .
+
+:LOCA2 a :MalfunctionEvent, owl:NamedIndividual;
+  rdfs:label "LOCA2"@en;
+  :hasStage :SCRAM2, :TurbineTrip2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:Loop2 a :PrimaryLoop, owl:NamedIndividual;
+  rdfs:label "PrimaryLoop2"@en;
+  :hasComponent :RCS2;
+  :hasBoronConcetration "[209; 209; 209; 209; 209; 208; 203; 150; 95]";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:SecondaryLoop2 a :SecondaryLoop, owl:NamedIndividual;
+  rdfs:label "SecondaryLoop2"@en;
+  :hasComponent :Turbine2;
+  :isComponentOf :AP600_2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:electricGenerator2 a :ElectricGenerator, owl:NamedIndividual;
+  rdfs:label "electricGenerator2"@en;
+  :isConnectedWith :Turbine2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasElectricPower "[71; 71; 71; 71; 70; 67; 4; 0; 0]" .
+
+:Core1 a :Core, owl:NamedIndividual;
+  rdfs:label "Core1"@en;
+  :isComponentOf :Vessel1;
+  :hasCoreFlow "[9206; 9053; 8690; 8914; 8959; 6510; 162; 229]";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasFuelAverageT "[484; 484; 485; 453; 292; 268; 238; 264]";
+  :hasNeutronPower "[100; 100; 100; 7; 0; 0; 0; 0]";
+  :hasThermalPower "[100; 100; 100; 87; 8; 5; 3; 3]";
+  :hasTotalReactivity "[0; 0; 0; -119; -197; -192; -187; -191 ]" .
+
+:Vessel1 a :Vessel, owl:NamedIndividual;
+  rdfs:label "Vessel1"@en;
+  :hasComponent :Core1;
+  :isComponentOf :RCS1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:Core2 a :Core, owl:NamedIndividual;
+  rdfs:label "Core2"@en;
+  :isComponentOf :Vessel2;
+  :hasCoreFlow "[9053; 9053; 8947; 8913; 8939; 8784; 6506; 162; 200]";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasFuelAverageT "[418; 419; 419; 418; 418; 297; 269; 235; 259]";
+  :hasNeutronPower "[69; 69; 69; 68; 68; 0; 0; 0; 0]";
+  :hasThermalPower "[70; 70; 70; 69; 70; 14; 5; 3; 2]";
+  :hasTotalReactivity "[0; 0; 0; 0; 0; -195; -194; -181; -178]" .
+
+:Vessel2 a :Vessel, owl:NamedIndividual;
+  rdfs:label "Vessel2"@en;
+  :hasComponent :Core2;
+  :isComponentOf :RCS2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:SCRAM1 a :ScramCondition, owl:NamedIndividual;
+  rdfs:label "SCRAM1"@en;
+  :precedes :TurbineTrip1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasScramActivation "[0; 0; 0; 1; 1; 1; 1; 1]" .
+
+:TurbineTrip1 a :TurbineTrip, owl:NamedIndividual;
+  rdfs:label "TurbineTrip1"@en;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasTripActivation "[0; 0; 0; 0; 0; 1; 1; 1]" .
+
+:SCRAM2 a :ScramCondition, owl:NamedIndividual;
+  rdfs:label "SCRAM2"@en;
+  :precedes :TurbineTrip2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasScramActivation "[0; 0; 0; 0; 0; 1; 1; 1; 1]" .
+
+:TurbineTrip2 a :TurbineTrip, owl:NamedIndividual;
+  rdfs:label "TurbineTrip2"@en;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasTripActivation "[0; 0; 0; 0; 0; 0; 1; 1]" .
+
+:RCS1 a :RCS, owl:NamedIndividual;
+  rdfs:label "RCS1"@en;
+  :hasComponent :Vessel1, :coldLeg1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:RCS2 a :RCS, owl:NamedIndividual;
+  rdfs:label "RCS2"@en;
+  :hasComponent :Vessel2, :coldLeg2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:coldLeg1 a :Leg, owl:NamedIndividual;
+  rdfs:label "coldLeg1"@en;
+  :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:coldLeg2 a :Leg, owl:NamedIndividual;
+  rdfs:label "coldLeg2"@en;
+  :hasColdLegRupture "[0; 1; 1; 1; 1; 1; 1; 1;";
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]" .
+
+:Turbine1 a :Turbine, owl:NamedIndividual;
+  rdfs:label "Turbine1"@en;
+  :isComponentOf :SecondaryLoop1;
+  :isConnectedWith :electricGenerator1;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1780; 5; 5]" .
+
+:Turbine2 a :Turbine, owl:NamedIndividual;
+  rdfs:label "Turbine2"@en;
+  :isComponentOf :SecondaryLoop2;
+  :isConnectedWith :electricGenerator2;
+  :hasDataInstants "[0; 10; 20; 30; 40; 65; 185; 385]";
+  :hasSpeed "[1800; 1800; 1800; 1800; 1800; 1800; 1800; 5; 5]" .
+
+_:node19 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+_:node20 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+_:node21 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+_:node22 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:onClass :Turbine;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:node23 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:allValuesFrom :PrimaryLoop .
+
+_:node24 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:allValuesFrom :SecondaryLoop .
+
+_:node25 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:allValuesFrom :PWR .
+
+_:node26 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+_:node27 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:someValuesFrom :ColdLeg .
+
+_:node28 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Vessel .
+
+_:node29 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :PrimaryLoop .
+
+_:node30 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:allValuesFrom :PWR .
+
+_:node31 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:onClass :Turbine;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger .
+
+_:node32 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:someValuesFrom :ElectricGenerator .
+
+_:node33 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :SecondaryLoop .
+
+_:node34 a owl:Restriction;
+  owl:onProperty :isConnectedWith;
+  owl:someValuesFrom :ColdLeg .
+
+_:node35 a owl:Restriction;
+  owl:onProperty :hasComponent;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Core .
+
+_:node36 a owl:Restriction;
+  owl:onProperty :isComponentOf;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :RCS .
+
+owl:Thing rdfs:comment ""@en .
