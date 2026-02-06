@@ -29,11 +29,6 @@
                             rdfs:label "hasMerealCausalityRelation" .
 
 
-###  http://www.ap600.com/ontolgies/ap600.owl/hasProperty
-:hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:label "hasProperty" .
-
-
 ###  http://www.ap600.com/ontolgies/ap600.owl/hasStage
 :hasStage rdf:type owl:ObjectProperty ;
           rdfs:label "hasStage" .
